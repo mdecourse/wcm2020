@@ -9,30 +9,23 @@
 <p><a href="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei">全頁檢視</a></p>
 <p><iframe height="600" src="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei" width="800"></iframe></p><h1>Grouping</h1>
 <h4>亂數分組:</h4>
-<p>學員名單 URL: <input id="studListUrl" size="70" type="text" value="https://mde.tw/wcm2020/downloads/2020spring_wcm_1a_list.txt"/><br/> 每組人數: <input id="grpNum" size="3" type="text" value="10"/><br/> <input id="submit" type="submit" value="開始分組"/><br/> <textarea cols="80" id="output" rows="10"></textarea></p>
-<script src="https://mde.tw/cp2019/downloads/dart_ex/random_grouping/random_grouping.js"></script>
-<p><a href="https://dartpad.github.io/embed-html.html?gh_owner=mdecourse&amp;gh_repo=cp2019&amp;gh_path=downloads/dart_ex/random_grouping&amp;theme=dark">Dart source code for random grouping</a></p>
-<h4>main.dart:</h4>
+<p>學員名單 URL: <input id="studListUrl" size="70" type="text" value="https://mde.tw/cd2020/downloads/2020spring_cd_2a_list.txt"/><br/> <input id="submit" type="submit" value="開始分組"/><br/> <textarea cols="80" id="output" rows="10"></textarea></p>
+<script src="https://mde.tw/cd2020/downloads/dart_ex/even_grouping/evenGrouping.js"></script>
+<p><a href="https://dartpad.github.io/embed-html.html?gh_owner=mdecourse&amp;gh_repo=cd2020&amp;gh_path=downloads/dart_ex/even_grouping&amp;theme=dark">Dart source code for random grouping</a></p>
+<h4>evenGrouping.dart:</h4>
 <pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">import 'dart:html';
 
-  InputElement grpNum = querySelector("#grpNum");
-  int num;
   InputElement studListUrl = querySelector("#studListUrl");
   String studUrl;
   // 將 Label 改為 Textarea, 避免產生過程結果嵌入所在頁面
   TextAreaElement output = querySelector("#output");
 
 main() {
-  querySelector("#submit").onClick.listen((e) =&gt; Grouping());
+  querySelector("#submit").onClick.listen((e) =&gt; grouping());
 }
 
-Grouping() {
+grouping() {
   output.innerHtml = "";
-  if (grpNum.value != "") {
-    num = int.parse(grpNum.value);
-  } else {
-    num = 10;
-  }
 
   if (studListUrl.value != "") {
     studUrl = studListUrl.value;
@@ -44,47 +37,90 @@ Grouping() {
   int gth = 1;
   // 迴圈序號變數
   int i;
+  int j;
+  int total;
+  int inc;
   // 每組學員暫存數列
   var gpList = [];
   // 全班分組數列
   var cp2019 = [];
+  // 各組人數數列
+  var numList = [];
 
   HttpRequest.getString(studUrl).then((String resp) {
     // 利用 trim() 去除字串最後的跳行符號, 之後再利用 split() 根據 \n 轉為數列
     var studList = resp.trim().split("\n");
     // 數列利用 shuffle() 方法以隨機方法弄亂順序
     studList.shuffle();
-    // 逐一讀取已經弄亂的學生學號數列, 利用模數運算每幾人分成一組
-    for (i = 0; i &lt; studList.length; i++) {
-      // 0, 1~(num-1), num
-      if (i % num == 0) {
-        gpList = [];
-        // 列印區隔符號
-        output.text += '=' * 20 + "\n";
-        output.text += "group $gth :" + "\n";
-        output.text += studList[i] + "\n";
+    total = studList.length;
+    output.text += "全班總計" + total.toString() + " 人\n";
+    numList = getNumList(studList.length);
+    inc = 0;
+    for (i in numList){
+      // 列印區隔符號
+      output.text += '=' * 20 + "\n";
+      output.text += "group $gth 有 " + i.toString() + " 人: \n";
+      gpList = [];
+      for (j = 0; j &lt; i; j++){
+        output.text += studList[j+inc] + "\n";
         // 在各分組數列中加入將對應的學員學號
-        gpList.add(studList[i]);
-        gth = gth + 1;
-      } else {
-        output.text += studList[i] + "\n";
-        // 在各分組數列中加入將對應的學員學號
-        gpList.add(studList[i]);
+        gpList.add(studList[j+inc]);
       }
-      if (i % num == 0) {
+      gth = gth + 1;
+      inc = inc + j;
+        //output.text += studList[j] + "\n";
         // 逐步將各組暫存的分組數列加入全班分組數列中
-        cp2019.add(gpList);
-      }
+      gpList.sort();
+      cp2019.add(gpList);
     }
     // 列出全班分組數列
     output.text += cp2019.toString() + "\n";
+    // 列出已經排序後的分組名單
+    output.text += '=' * 25 + "\n";
+    output.text += '以下為排序後的各組成員名單: \n';
+    gth = 1;
+    for (i=0; i &lt; cp2019.length; i++){
+      // 列印區隔符號
+      output.text += '=' * 20 + "\n";
+      output.text += "group $gth \n";
+      gpList = [];
+      for (j=0; j &lt; cp2019[i].length; j++){
+        output.text += cp2019[i][j] + "\n";
+      }
+      gth = gth + 1;
+    }
   });
 }
+
+List getNumList(int total){
+  // total student number
+  // int total = 65;
+  // initial each group expect to be "eachGrp" number of people
+  int eachGrp = 10;
+  // may divide into "grpNum" number of group
+  int grpNum = total ~/ eachGrp;
+  // vacant list
+  var splits = [];
+  // find remainder when total number divid into "grpNum" number of group
+  int remainder = total % grpNum;
+  // number of people in one group by calculation
+  int calGrp = total ~/ grpNum;
+
+  for (int i = 0; i &lt; grpNum; i++) {
+    splits.add(calGrp);
+  }
+  //print(splits);
+
+  for (int i = 0; i &lt; remainder; i++) {
+    splits[i] += 1;
+  }
+  //print(splits);
+  return splits;
+ }
 </pre>
 <h4>index.html:</h4>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;h1&gt;亂數分組:&lt;/h1&gt;
-學員名單 URL: &lt;input type="text" id="studListUrl" size="50" value="https://mde.tw/cp2019/downloads/2019fall_cp_1a_list.txt"&gt;&lt;br /&gt;
-每組人數: &lt;input type="text" id="grpNum" size="3" value="10"&gt;&lt;br /&gt;
+學員名單 URL: &lt;input type="text" id="studListUrl" size="50" value="https://mde.tw/wcm2020/downloads/2020spring_wcm_1a_list.txt"&gt;&lt;br /&gt;
 &lt;input type="submit" value="開始分組" id="submit"&gt;&lt;br /&gt;
 &lt;textarea id="output" cols="80" rows="10"&gt;&lt;/textarea&gt;</pre>
 <h4>style.css:</h4>
@@ -97,16 +133,26 @@ input, select, textarea {
 font-size: 100%;
 }</pre>
 <p></p><h1>Topics</h1>
-<p>Login to your gm email account and download <a href="https://drive.google.com/file/d/1gLb9_6FEv58wVX2uShG_3sgUseFEcH_y/view?usp=sharing">2020wcm_topic_1.pdf</a>.</p>
-<p style="padding-left: 30px;">What is a content management system?</p>
-<p style="padding-left: 30px;">Analyzing your information life cycle.</p>
-<p style="padding-left: 30px;">Overview of enterprise content management.</p>
-<p><span>Login to your gm email account and download <a href="https://drive.google.com/file/d/1YkLWsDVRlScSuSBQv2Aa1JSjvbydJli-/view?usp=sharing">IntroductionToVersionControlAndGit.pdf</a>.</span></p>
-<p style="padding-left: 30px;"><span>What is version control?</span></p>
-<p style="padding-left: 30px;"><span>Git installation and setup.</span></p>
-<p style="padding-left: 30px;"><span>Git getting started.</span></p>
-<p style="padding-left: 30px;"><span>Commits and remote git.</span></p>
-<p><span>Login to your gm email account and download <a href="https://drive.google.com/file/d/1vnkDLW1cg8hKEMUdjDstvWqiS4R1n3IC/view?usp=sharing">GithubPrimer.pdf</a></span></p><h1>Dartpad</h1>
+<h4>WCM</h4>
+<p style="padding-left: 30px;">Login to your gm email account and download <a href="https://drive.google.com/file/d/1gLb9_6FEv58wVX2uShG_3sgUseFEcH_y/view?usp=sharing">2020wcm_topic_1.pdf</a>.</p>
+<p style="padding-left: 60px;">What is a content management system?</p>
+<p style="padding-left: 60px;">Analyzing your information life cycle.</p>
+<p style="padding-left: 60px;">Overview of enterprise content management.</p>
+<h4><span>Git</span></h4>
+<p style="padding-left: 30px;"><span>Login to your gm email account and download <a href="https://drive.google.com/file/d/1YkLWsDVRlScSuSBQv2Aa1JSjvbydJli-/view?usp=sharing">IntroductionToVersionControlAndGit.pdf</a>.</span></p>
+<p style="padding-left: 60px;"><span>What is version control?</span></p>
+<p style="padding-left: 60px;"><span>Git installation and setup.</span></p>
+<p style="padding-left: 60px;"><span>Git getting started.</span></p>
+<p style="padding-left: 60px;"><span>Commits and remote git.</span></p>
+<h4><span>Github</span></h4>
+<p style="padding-left: 30px;"><span>Login to your gm email account and download <a href="https://drive.google.com/file/d/1vnkDLW1cg8hKEMUdjDstvWqiS4R1n3IC/view?usp=sharing">GithubPrimer.pdf</a></span></p>
+<h4><span>Python and Flask</span></h4>
+<p style="padding-left: 30px;"><span>Login to your gm email account and download <a href="https://drive.google.com/file/d/17_LCSvwgtnIG8FnpezfUlEdbo3Y6G6CP/view?usp=sharing">2019_ABeginnersGuideToPython3Programming.pdf</a></span></p>
+<p style="padding-left: 30px;"><span>Login to your gm email account and download <a href="https://drive.google.com/file/d/1u3PHIbGWz3r4bct_molJg8FODkS8tf02/view?usp=sharing">2019_BuildingRESTAPIsWithFlask.pdf</a></span></p>
+<p style="padding-left: 30px;"><span><a href="https://github.com/mstamy2/PyPDF2">https://github.com/mstamy2/PyPDF2</a></span></p>
+<h4><span>Dart and Flutter</span></h4>
+<p style="padding-left: 30px;"><span>Login to your gm email account and download<span><span> <a href="https://drive.google.com/file/d/1kN0ggmdO8d3oKqT11MRnPtJaKhC5g22t/view?usp=sharing">2020_ QuickStartGuideToDartProgramming.pdf</a></span></span></span></p>
+<p style="padding-left: 30px;"><span><span><span>Login to your gm email account and download<span><span><span> <a href="https://drive.google.com/file/d/1RyCFxXrh0skRAWafX7nyYFVHuMO68iTS/view?usp=sharing">2019_BeginningAppDevelopmentWithFlutter.pdf</a></span></span></span></span></span></span></p><h1>Dartpad</h1>
 <p>Notice: the <a href="https://developer.github.com/apps/building-github-apps/understanding-rate-limits-for-github-apps/">rate limits of Github Apps</a></p>
 <p style="padding-left: 30px;"><a href="https://developer.github.com/v3/rate_limit/">Github rate limits</a></p>
 <p style="padding-left: 30px;"><a href="https://docs.gitlab.com/ee/security/rate_limits.html">Gitlab rate limits setup</a></p>
