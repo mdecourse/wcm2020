@@ -11083,7 +11083,7 @@ l=new P.cp(c,c,m)
 m=new E.l6(new P.cp(c,c,m),l,new P.cp(c,c,[Z.dl]),s,new P.cP(new P.P($.E,[null]),[null]))
 s.src
 m.ky()
-s.src=d.gik()?"scripts/frame_dark.html":"../scripts/frame.html"
+s.src=d.gik()?"frame_dark.html":"../scripts/frame.html"
 d.r1=m
 new P.cQ(l,[t]).bn(0,new O.l3(d))
 t=d.r1.a
