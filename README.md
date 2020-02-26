@@ -1,5 +1,5 @@
 [![Gitter](https://badges.gitter.im/mdecourse/wcm2020.svg)](https://gitter.im/mdecourse/wcm2020?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-# wcm2010
+# wcm2020
 2020 Spring 機械設計四技一的網際內容管理課程網頁
 
 Repository: https://github.com/mdecourse/wcm2020
