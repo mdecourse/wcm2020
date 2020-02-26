@@ -1,8 +1,138 @@
 <h1>About</h1>
-<p></p>
+<p>Repository: <a href="https://github.com/mdecourse/wcm2020">https://github.com/mdecourse/wcm2020</a></p>
+<p>Project: <a href="https://github.com/mdecourse/wcm2020/projects/1">https://github.com/mdecourse/wcm2020/projects/1</a></p>
+<p>Web site: <a href="https://mde.tw/wcm2020">https://mde.tw/wcm2020</a> </p>
+<p>Blog: <a href="https://mde.tw/wcm2020/blog">https://mde.tw/wcm2020/blog</a> </p>
+<p>Presentation:  <a href="https://mde.tw/wcm2020/reveal">https://mde.tw/wcm2020/reveal</a> </p>
 <h4><span><a href="https://drive.google.com/open?id=1cZFSsLEoGOBYojzKzFEf4YH2l--pbS-9"></a></span>電腦輔助設計室與協同設計室行事曆</h4>
 <p><a href="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei">全頁檢視</a></p>
-<p><iframe height="600" src="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei" width="800"></iframe></p><h1>Project</h1>
+<p><iframe height="600" src="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei" width="800"></iframe></p><h1>Grouping</h1>
+<h4>亂數分組:</h4>
+<p>學員名單 URL: <input id="studListUrl" size="70" type="text" value="https://mde.tw/wcm2020/downloads/2020spring_wcm_1a_list.txt"/><br/> 每組人數: <input id="grpNum" size="3" type="text" value="10"/><br/> <input id="submit" type="submit" value="開始分組"/><br/> <textarea cols="80" id="output" rows="10"></textarea></p>
+<script src="https://mde.tw/cp2019/downloads/dart_ex/random_grouping/random_grouping.js"></script>
+<p><a href="https://dartpad.github.io/embed-html.html?gh_owner=mdecourse&amp;gh_repo=cp2019&amp;gh_path=downloads/dart_ex/random_grouping&amp;theme=dark">Dart source code for random grouping</a></p>
+<h4>main.dart:</h4>
+<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">import 'dart:html';
+
+  InputElement grpNum = querySelector("#grpNum");
+  int num;
+  InputElement studListUrl = querySelector("#studListUrl");
+  String studUrl;
+  // 將 Label 改為 Textarea, 避免產生過程結果嵌入所在頁面
+  TextAreaElement output = querySelector("#output");
+
+main() {
+  querySelector("#submit").onClick.listen((e) =&gt; Grouping());
+}
+
+Grouping() {
+  output.innerHtml = "";
+  if (grpNum.value != "") {
+    num = int.parse(grpNum.value);
+  } else {
+    num = 10;
+  }
+
+  if (studListUrl.value != "") {
+    studUrl = studListUrl.value;
+  } else {
+    studUrl = 'https://mde.tw/cp2019/downloads/2019fall_cp_1a_list.txt';
+  }
+
+  // 組序由 1 開始
+  int gth = 1;
+  // 迴圈序號變數
+  int i;
+  // 每組學員暫存數列
+  var gpList = [];
+  // 全班分組數列
+  var cp2019 = [];
+
+  HttpRequest.getString(studUrl).then((String resp) {
+    // 利用 trim() 去除字串最後的跳行符號, 之後再利用 split() 根據 \n 轉為數列
+    var studList = resp.trim().split("\n");
+    // 數列利用 shuffle() 方法以隨機方法弄亂順序
+    studList.shuffle();
+    // 逐一讀取已經弄亂的學生學號數列, 利用模數運算每幾人分成一組
+    for (i = 0; i &lt; studList.length; i++) {
+      // 0, 1~(num-1), num
+      if (i % num == 0) {
+        gpList = [];
+        // 列印區隔符號
+        output.text += '=' * 20 + "\n";
+        output.text += "group $gth :" + "\n";
+        output.text += studList[i] + "\n";
+        // 在各分組數列中加入將對應的學員學號
+        gpList.add(studList[i]);
+        gth = gth + 1;
+      } else {
+        output.text += studList[i] + "\n";
+        // 在各分組數列中加入將對應的學員學號
+        gpList.add(studList[i]);
+      }
+      if (i % num == 0) {
+        // 逐步將各組暫存的分組數列加入全班分組數列中
+        cp2019.add(gpList);
+      }
+    }
+    // 列出全班分組數列
+    output.text += cp2019.toString() + "\n";
+  });
+}
+</pre>
+<h4>index.html:</h4>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;h1&gt;亂數分組:&lt;/h1&gt;
+學員名單 URL: &lt;input type="text" id="studListUrl" size="50" value="https://mde.tw/cp2019/downloads/2019fall_cp_1a_list.txt"&gt;&lt;br /&gt;
+每組人數: &lt;input type="text" id="grpNum" size="3" value="10"&gt;&lt;br /&gt;
+&lt;input type="submit" value="開始分組" id="submit"&gt;&lt;br /&gt;
+&lt;textarea id="output" cols="80" rows="10"&gt;&lt;/textarea&gt;</pre>
+<h4>style.css:</h4>
+<pre class="brush:css;auto-links:false;toolbar:false" contenteditable="false">body {
+  color: white;
+  font-size: 20px;
+}
+
+input, select, textarea {
+font-size: 100%;
+}</pre>
+<p></p><h1>Dartpad</h1>
+<!-- 透過 getDart(dirname) 取位於 downloads/dart_ex/ 目錄中 dirname 目錄中的 Dart 程式碼 -->
+<script>
+function getDart(dirname){
+    source = "https://mde.tw/wcm2020/downloads/dartpad/embed-dart.html?gh_owner=mdecourse&gh_repo=wcm2020&gh_path=downloads/dart_ex/" + dirname + "&theme=dark";
+    document.getElementById("iframe").src = source ;
+}
+
+function getHtmlDart(dirname){
+    source = "https://mde.tw/wcm2020/downloads/dartpad/embed-html.html?gh_owner=mdecourse&gh_repo=wcm2020&gh_path=downloads/dart_ex/" + dirname + "&theme=dark";
+document.getElementById("iframe").src = source ;
+}
+
+function getFlutter(dirname){
+    source = "https://mde.tw/wcm2020/downloads/dartpad/embed-flutter.html?gh_owner=mdecourse&gh_repo=wcm2020&gh_path=downloads/dart_ex/" + dirname + "&theme=dark";
+document.getElementById("iframe").src = source ;
+}
+
+function largest(){
+document.getElementById("iframe").width = document.body.clientWidth ;
+document.getElementById("iframe").height = document.body.clientWidth*0.5 ;
+}
+
+function original(){
+document.getElementById("iframe").width = 800 ;
+document.getElementById("iframe").height = 600 ;
+}
+</script>
+<!-- 取 Dart 程式的按鈕 -->
+<h4>純 Dart 程式</h4>
+<p><button onclick="getDart('hello')">Hello</button> <button onclick="getDart('for')">For Loop</button> <button onclick="getDart('sum')">Sum</button> <button onclick="getDart('runge_kutta')">Runge-Kutta</button> <button onclick="getDart('rk_ex1')">RK ex1</button> <button onclick="getDart('mass_spring_damping')">Mass Spring Damping</button> <button onclick="getDart('function')">Function</button> <button onclick="getDart('fun_parameter')">Function Parameter</button> <button onclick="getDart('fat_arrow')">Fat Arrow</button> <button onclick="getDart('temp1')">Temp 1</button></p>
+<h4>Html 程式</h4>
+<p><button onclick="getHtmlDart('random_grouping')">亂數分組</button> <button onclick="getHtmlDart('roc_flag')">ROC Flag</button> <button onclick="getHtmlDart('rotROC')">rot ROC</button> <button onclick="getHtmlDart('usaflag')">USA Flag</button> <button onclick="getHtmlDart('grid')">Grid</button> <button onclick="getHtmlDart('xyplot')">X-Y Plot</button> <button onclick="getHtmlDart('slithery')">Slithery</button> <button onclick="getHtmlDart('html_tetris')">Tetris</button></p>
+<h4>Flutter 程式</h4>
+<p><button onclick="getFlutter('flutter0')">Flutter0</button> <button onclick="getFlutter('flutter1')">Flutter1</button> <button onclick="getFlutter('flutter2')">Flutter2</button> <button onclick="getFlutter('flutter3')">Flutter3</button> <button onclick="getFlutter('flutter4')">Flutter4</button> <button onclick="getFlutter('flutter_counter')">Flutter Counter</button> <button onclick="getFlutter('flutter_roc')">ROC Flag</button> <button onclick="getFlutter('flutter_mine1')">踩地雷 1</button> <button onclick="getFlutter('flutter_mine2')">踩地雷 2</button> <button onclick="getFlutter('flutter_mine3')">踩地雷 3</button> <button onclick="getFlutter('flutter_mine4')">踩地雷 4</button> <button onclick="getFlutter('flutter_dropdown')">Dropdown</button> <button onclick="getFlutter('flutter_multiselect')">Multiselect</button> <button onclick="getFlutter('flutter_search')">Search</button> <button onclick="getFlutter('flutter_login')">Login</button> <button onclick="getFlutter('flutter_temp')">溫度轉換</button> <button onclick="getFlutter('flutter_ttt')">Tic-Tac-Toe</button> <button onclick="getFlutter('flutter_calculator')">Calculator</button> <button onclick="getFlutter('flutter_mouse1')">Mouse1</button> <button onclick="getFlutter('flutter_paint1')">Paint1</button></p>
+<!-- 內建放入的 Dart 原始碼 -->
+<p><button onclick="largest()">放大</button> <button onclick="original()">回復</button></p>
+<p><iframe height="600" id="iframe" src="https://mde.tw/wcm2020/downloads/dartpad/embed-dart.html?gh_owner=mdecourse&amp;gh_repo=wcm2020&amp;gh_path=downloads/dart_ex/mass_spring_damping&amp;theme=dark" width="800"></iframe></p><h1>Project</h1>
 <h4>Dart:</h4>
 <p>Quick Start Guide to Dart Programming</p>
 <p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-5562-9">https://link.springer.com/book/10.1007/978-1-4842-5562-9</a></p>
@@ -17,11 +147,47 @@
 <p>Learn to Program with Python 3</p>
 <p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-3879-0">https://link.springer.com/book/10.1007/978-1-4842-3879-0</a></p>
 <p>Building REST APIs with Flask</p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-5022-8">https://link.springer.com/book/10.1007/978-1-4842-5022-8</a></p>
-<h2>Dart-Angel</h2>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-5022-8">https://link.springer.com/book/10.1007/978-1-4842-5022-8</a></p><h2>Python as backend</h2>
+<p>Web based PDF file manipulation system</p>
+<p style="padding-left: 30px;">A Beginners Guide to Python 3 Programming</p>
+<p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-3-030-20290-3">https://link.springer.com/book/10.1007/978-3-030-20290-3</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/mstamy2/PyPDF2">https://github.com/mstamy2/PyPDF2</a></p>
+<p style="padding-left: 30px;">Building REST APIs with Flask</p>
+<p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-5022-8">https://link.springer.com/book/10.1007/978-1-4842-5022-8</a></p>
+<p>CMSiMDE (integrated with Pelican blog and Reveal.js)</p>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a></p>
+<p>Temp Conversion (Dart as frontend)</p>
+<p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/Temp%20Conv.html">http://mde.tw/cp2019/content/Temp%20Conv.html</a></p>
+<p>Pygrouf (linked with SQLite, MySQL and PostgreSQL)</p>
+<p style="padding-left: 30px;"><a href="https://github.com/chiamingyen/pygrouf">https://github.com/chiamingyen/pygrouf</a></p>
+<p>CP to CAD (deployment with <a href="https://www.heroku.com/">https://www.heroku.com/</a>)</p>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/wcms-scrum1">https://github.com/mdecourse/wcms-scrum1</a></p>
+<p>Web-based Laboratory 2020</p>
+<p style="padding-left: 30px;">based on <a href="https://link.springer.com/book/10.1007/b138627">Creating Web-based Laboratories</a> (2004 with Matlab and Simulink)</p><h2>Dart as backend</h2>
+<h4>Dart-Angel</h4>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/UzuecP3utk8" width="560"></iframe></p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/iPbM10mvpko" width="560"></iframe></p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/jM9-JtIbokQ" width="560"></iframe></p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/dMIdLiwksUE" width="560"></iframe></p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/3T4iYYgpCJw" width="560"></iframe></p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/ggmjumYogEo" width="560"></iframe></p>
+<h4>Aquenduct</h4>
+<p><a href="https://aqueduct.io/">https://aqueduct.io/</a></p>
+<h2>Threejs</h2>
+<p>Essential TypeScript</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-4979-6">https://link.springer.com/book/10.1007/978-1-4842-4979-6</a></p>
+<p><a href="https://github.com/threeDart/three.dart">https://github.com/threeDart/three.dart</a></p>
+<p style="padding-left: 30px;"><a href="http://threedart.github.io/three.dart/">http://threedart.github.io/three.dart/</a></p>
+<p><a href="https://github.com/block-forest/threejs-dart-facade">https://github.com/block-forest/threejs-dart-facade</a></p>
+<h2>WebVR</h2>
+<p>Learning Web-based Virtual Reality</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-2710-7">https://link.springer.com/book/10.1007/978-1-4842-2710-7</a></p>
+<p style="padding-left: 30px;"><a href="https://glitch.com/~fancy-python">https://glitch.com/~fancy-python</a></p>
+<p style="padding-left: 60px;"><a href="https://aframe.io/">https://aframe.io/</a></p>
+<p><a href="https://www.roadtovr.com/4-steps-to-start-experimenting-with-webvr-in-10-minutes/">https://www.roadtovr.com/4-steps-to-start-experimenting-with-webvr-in-10-minutes/</a></p>
+<p style="padding-left: 30px;"><a href="http://borismus.github.io/webvr-boilerplate/">http://borismus.github.io/webvr-boilerplate/</a></p>
+<p><a href="https://skywell.software/blog/what-is-webvr-and-how-to-use-it/">https://skywell.software/blog/what-is-webvr-and-how-to-use-it/</a></p>
+<h4>Flutter and AR</h4>
+<p style="padding-left: 30px;"><a href="https://medium.com/flutterpub/flutter-and-ar-a65bb202c5d8">https://medium.com/flutterpub/flutter-and-ar-a65bb202c5d8</a></p>
+<p style="padding-left: 30px;"><a href="https://flatteredwithflutter.com/how-to-create-ar-in-flutter/">https://flatteredwithflutter.com/how-to-create-ar-in-flutter/</a></p>
+<p style="padding-left: 30px;"><a href="https://pub.dev/packages/arcore_flutter_plugin">https://pub.dev/packages/arcore_flutter_plugin</a></p>

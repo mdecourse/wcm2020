@@ -1,0 +1,42 @@
+runtime: python37
+default_expiration: "0d 3h"
+
+handlers:
+  - url: /pictures
+    static_dir: pictures
+
+  - url: /example
+    static_dir: example
+
+  - url: /scripts/assets/FontManifest.json
+    static_files: scripts/assets/FontManifest.json
+    upload: scripts/assets/FontManifest\.json
+    http_headers:
+      Access-Control-Allow-Origin: "*"
+
+  - url: /scripts
+    static_dir: scripts
+
+  - url: /styles
+    static_dir: styles
+
+  - url: /text-fonts
+    static_dir: text-fonts
+
+  - url: /packages/codemirror
+    static_dir: packages/code-mirror
+
+  - url: /packages/dart-pad
+    static_dir: packages/dart-pad
+
+  - url: /packages/split
+    static_dir: packages/split
+
+  - url: /packages/octicons_css
+    static_dir: packages/octicons_css
+
+  - url: .*
+    script: auto
+
+    # Enable for version == prod.
+    secure: always
