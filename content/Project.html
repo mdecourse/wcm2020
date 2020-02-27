@@ -155,6 +155,83 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">Dartpad << <a href='Dartpad.html'>Previous</a> <a href='Python as backend.html'>Next</a> >> Python as backend<br /><h1>Project</h1>
+<p>Build an online pdf file manipulation system.</p>
+<p style="padding-left: 30px;">pdf file upload</p>
+<p style="padding-left: 30px;">pdf file split</p>
+<p style="padding-left: 30px;">pdf file merge</p>
+<p>Build an online content management system.</p>
+<p style="padding-left: 30px;">markdown editor</p>
+<p style="padding-left: 30px;">markdown to LaTeX</p>
+<p style="padding-left: 30px;">LaTeX to pdf</p>
+<h4>References</h4>
+<h4>Pypdf2 examples:</h4>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pypdf2_ex1.py
+import os
+from PyPDF2 import PdfFileWriter, PdfFileReader
+
+pdfReader = PdfFileReader(open("2002_Book_Real-WorldASPNETBuildingAConte.pdf", "rb"))
+information = [("WhatIsCMS",18,45)]
+
+for page in range(len(information)):
+    pdf_writer = PdfFileWriter()
+    start = information[page][1]
+    end = information[page][2]
+    while start&lt;=end:
+        pdf_writer.addPage(pdfReader.getPage(start-1))
+        start+=1
+    if not os.path.exists("./"):
+        os.makedirs(savepath)
+    output_filename = '{}_{}_page_{}.pdf'.format(information[page][0],information[page][1], information[page][2])
+    with open(output_filename,'wb') as out:
+        pdf_writer.write(out)
+</pre>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pypdf2_ex2.py
+import os
+from PyPDF2 import PdfFileWriter, PdfFileReader
+
+pdfReader = PdfFileReader(open("Beginning-Git-and-GitHub.pdf", "rb"))
+information = [("GitAndGithub",17,105),("GitAndGithub",107,194),("GitAndGithub",196,289)]
+
+for page in range(len(information)):
+    pdf_writer = PdfFileWriter()
+    start = information[page][1]
+    end = information[page][2]
+    while start&lt;=end:
+        pdf_writer.addPage(pdfReader.getPage(start-1))
+        start+=1
+    if not os.path.exists("./"):
+        os.makedirs(savepath)
+    output_filename = '{}_{}_page_{}.pdf'.format(information[page][0],information[page][1], information[page][2])
+    with open(output_filename,'wb') as out:
+        pdf_writer.write(out)
+</pre>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pypdf2_ex3.py
+# merge several pdf files
+import sys
+import PyPDF2
+
+pdf_write_object = PyPDF2.PdfFileWriter()
+
+#for i in sys.argv[1:]:
+for i in ["WhatIsCMS.pdf","InforLifeCycle.pdf","EnterpriseContentManage.pdf"]:
+    pdf_read_object = PyPDF2.PdfFileReader(i)
+    print('processing file : '+ i + 'number of pages : ' +  str(pdf_read_object.numPages))
+    for page in range(pdf_read_object.numPages):
+        pdf_write_object.addPage(pdf_read_object.getPage(page))
+
+final_file_object = open('2020CMS.pdf', 'wb')
+pdf_write_object.write(final_file_object)
+final_file_object.close()
+</pre>
+<h4>Python:</h4>
+<p>Learn to Program with Python 3</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-3879-0">https://link.springer.com/book/10.1007/978-1-4842-3879-0</a></p>
+<p><a href="https://github.com/mstamy2/PyPDF2">https://github.com/mstamy2/PyPDF2</a></p>
+<p>Building REST APIs with Flask</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-5022-8">https://link.springer.com/book/10.1007/978-1-4842-5022-8</a></p>
+<p>The Definitive Guide to SQLite</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-3226-1">https://link.springer.com/book/10.1007/978-1-4302-3226-1</a></p>
+<hr/>
 <h4>Dart:</h4>
 <p>Quick Start Guide to Dart Programming</p>
 <p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-5562-9">https://link.springer.com/book/10.1007/978-1-4842-5562-9</a></p>
@@ -165,11 +242,14 @@ img.add_border {
 <p>Backend Framework in Dart:</p>
 <p style="padding-left: 30px;"><a href="https://angel-dart.dev/">https://angel-dart.dev/</a></p>
 <hr/>
-<h4>Python:</h4>
-<p>Learn to Program with Python 3</p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-3879-0">https://link.springer.com/book/10.1007/978-1-4842-3879-0</a></p>
-<p>Building REST APIs with Flask</p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-5022-8">https://link.springer.com/book/10.1007/978-1-4842-5022-8</a></p><br />Dartpad << <a href='Dartpad.html'>Previous</a> <a href='Python as backend.html'>Next</a> >> Python as backend</div>
+<h4>LaTeX, Markdown and Pandoc</h4>
+<p>Login to your gm email account and download</p>
+<p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1V4Zkg1B3nVyEZxkCMiS8-okTZ3JEp0zT/view?usp=sharing">2017_LaTeXIn24Hours.pdf</a></p>
+<p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1QY0ljZGzWMHCkxn5LA_GCd04C8otF1RF/view?usp=sharing">2014_PracticalLaTeX.pdf</a></p>
+<p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1Uj0JsOqKLcPtpwXXnDsV0V3gdalquqsp/view?usp=sharing">2016_MoreMathIntoLaTeX.pdf</a></p>
+<p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/13qrqKKznk2E62q076HLxmaC4FRKlV-LQ/view?usp=sharing">2019_IntroducingMarkdownAndPandoc.pdf</a></p>
+<p><a href="https://pandoc.org/">https://pandoc.org/</a></p>
+<p><a href="https://yihui.org/tinytex/">https://yihui.org/tinytex/</a></p><br />Dartpad << <a href='Dartpad.html'>Previous</a> <a href='Python as backend.html'>Next</a> >> Python as backend</div>
         
     <!-- footer -->
       <div class="container">
