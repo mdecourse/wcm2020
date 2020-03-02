@@ -13,11 +13,11 @@
 <p style="padding-left: 30px;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdSvo89BOMfQOxFflhx-b3eDa_kYP0lUkTLfotdr1AEyQbItw/viewform?usp=sf_link">課程回饋表單</a></p>
 <p style="padding-left: 30px;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfzbBnD7-GL2Nc41vmu2vGB6foETL0cNJpg7yrnMaHCqjRA9w/viewform?usp=sf_link">網際內容管理自評與互評表單</a></p><h1>Grouping</h1>
 <h4>亂數分組:</h4>
-<p><a href="https://mde.tw/wcm2020/downloads/2020spring_wcm_1a_list.txt">https://mde.tw/wcm2020/downloads/2020spring_wcm_1a_list.txt</a> taken from <a href="https://osa.nfu.edu.tw/">https://osa.nfu.edu.tw/</a> on Feb. 19, 2020.</p>
-<p>The most updated list: <a href="https://s1.mde.nfu.edu.tw:7443/?semester=1082&amp;courseno=0744">https://s1.mde.nfu.edu.tw:7443/?semester=1082&amp;courseno=0744</a> </p>
+<p><a href="https://mde.tw/wcm2020/downloads/2020spring_wcm_1a_list.txt">https://mde.tw/wcm2020/downloads/2020spring_wcm_1a_list.txt</a> was taken from <a href="https://osa.nfu.edu.tw/">https://osa.nfu.edu.tw/</a> on Feb. 19, 2020.</p>
+<p>The most updated list: <a href="http://s1.mde.nfu.edu.tw:8000/?semester=1082&amp;courseno=0744">http://s1.mde.nfu.edu.tw:8000/?semester=1082&amp;courseno=0744</a> </p>
 <p>semester: 1082</p>
 <p>courseno: 0744</p>
-<p>學員名單 URL: <input id="studListUrl" size="70" type="text" value="https://s1.mde.nfu.edu.tw:7443/?semester=1082&amp;courseno=0744 "/><br/> <input id="submit" type="submit" value="開始分組"/><br/> <textarea cols="80" id="output" rows="10"></textarea></p>
+<p>學員名單 URL: <input id="studListUrl" size="70" type="text" value="http://s1.mde.nfu.edu.tw:8000/?semester=1082&amp;courseno=0744 "/><br/> <input id="submit" type="submit" value="開始分組"/><br/> <textarea cols="80" id="output" rows="10"></textarea></p>
 <script src="https://mde.tw/cd2020/downloads/dart_ex/even_grouping/evenGrouping.js"></script>
 <p><a href="https://dartpad.github.io/embed-html.html?gh_owner=mdecourse&amp;gh_repo=cd2020&amp;gh_path=downloads/dart_ex/even_grouping&amp;theme=dark">Dart source code for random grouping</a></p>
 <h4>evenGrouping.dart:</h4>
@@ -217,11 +217,11 @@ else:
 </pre>
 <h4>nginx sites-available/default settings:</h4>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">server {
-    #listen 87 default_server;
-    #listen [::]:87 default_server ipv6only=on;
- 
+    listen 8000;
+    server_name s1.mde.nfu.edu.tw;
+    charset utf-8;
+    
     listen 7443 ssl;
-    #listen [::]:7443 ssl ipv6only=on;
  
     location /static {
         alias /home/kmol2019/course_studlist/static/;
@@ -231,9 +231,7 @@ else:
         include uwsgi_params;
         uwsgi_pass  127.0.0.1:8087;
     }
- 
-    #server_name ipv4_ip;
-    #ssl on;
+    
     ssl_certificate /etc/stunnel/localhost.crt;
     ssl_certificate_key /etc/stunnel/localhost.key;
     ssl_session_timeout 5m;
