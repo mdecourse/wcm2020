@@ -13,7 +13,11 @@
 <p style="padding-left: 30px;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdSvo89BOMfQOxFflhx-b3eDa_kYP0lUkTLfotdr1AEyQbItw/viewform?usp=sf_link">課程回饋表單</a></p>
 <p style="padding-left: 30px;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfzbBnD7-GL2Nc41vmu2vGB6foETL0cNJpg7yrnMaHCqjRA9w/viewform?usp=sf_link">網際內容管理自評與互評表單</a></p><h1>Grouping</h1>
 <h4>亂數分組:</h4>
-<p>學員名單 URL: <input id="studListUrl" size="70" type="text" value="https://mde.tw/wcm2020/downloads/2020spring_wcm_1a_list.txt"/><br/> <input id="submit" type="submit" value="開始分組"/><br/> <textarea cols="80" id="output" rows="10"></textarea></p>
+<p><a href="https://mde.tw/wcm2020/downloads/2020spring_wcm_1a_list.txt">https://mde.tw/wcm2020/downloads/2020spring_wcm_1a_list.txt</a> taken from <a href="https://osa.nfu.edu.tw/">https://osa.nfu.edu.tw/</a> on Feb. 19, 2020.</p>
+<p>The most updated list: <a href="https://s1.mde.nfu.edu.tw:7443/?semester=1082&amp;courseno=0744">https://s1.mde.nfu.edu.tw:7443/?semester=1082&amp;courseno=0744</a> </p>
+<p>semester: 1082</p>
+<p>courseno: 0744</p>
+<p>學員名單 URL: <input id="studListUrl" size="70" type="text" value="https://s1.mde.nfu.edu.tw:7443/?semester=1082&amp;courseno=0744 "/><br/> <input id="submit" type="submit" value="開始分組"/><br/> <textarea cols="80" id="output" rows="10"></textarea></p>
 <script src="https://mde.tw/cd2020/downloads/dart_ex/even_grouping/evenGrouping.js"></script>
 <p><a href="https://dartpad.github.io/embed-html.html?gh_owner=mdecourse&amp;gh_repo=cd2020&amp;gh_path=downloads/dart_ex/even_grouping&amp;theme=dark">Dart source code for random grouping</a></p>
 <h4>evenGrouping.dart:</h4>
@@ -136,6 +140,135 @@ List getNumList(int total){
 input, select, textarea {
 font-size: 100%;
 }</pre>
+<h4>get_student.py</h4>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask, request 
+from flask_cors import CORS
+
+import requests
+import bs4
+import ssl
+
+'''
+https://s1.mde.nfu.edu.tw:7443/?semester=1082&amp;courseno=0767
+cd
+2a 1082/0767
+2b 1082/0780
+
+2a 1072/0777
+2b 1072/0790
+2a 1062/0788
+2a 1062/0802
+
+wcm
+1082/0744
+
+1072/0754
+1062/0765
+
+wcmj
+1082/2418
+'''
+
+app = Flask(__name__)
+CORS(app)
+
+@app.route('/studlist')
+@app.route('/')
+def studlist():
+    semester = request.args.get('semester')
+    courseno = request.args.get('courseno')
+    if semester == None:
+        semester = '1082'
+    if courseno == None:
+        courseno = '0744'
+    
+    url = 'https://osa.nfu.edu.tw/query/studlist_ajax.php'
+    post_var = {'pselyr': semester, 'pseqno': courseno}
+
+    result = requests.post(url, data = post_var)
+
+    soup = bs4.BeautifulSoup(result.content, 'lxml')
+    table = soup.find('table', {'class': 'tbcls'})
+    data = []
+    rows = table.find_all('tr')
+    for row in rows:
+        cols = row.find_all('td')
+        cols = [ele.text.strip() for ele in cols]
+        data.append([ele for ele in cols if ele]) # Get rid of empty values
+    output = ""
+    for i in data[2:]:
+        #print(i[0])
+        output +=i[0] + "\n"
+    return output
+    #return  str(pselyr) + " + " +str(pseqno)
+
+# 即使在近端仍希望以 https 模式下執行
+context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+context.load_cert_chain('localhost.crt', 'localhost.key')
+
+# 取 flaskapp.py 中的 uwsgi 變數設定
+uwsgi = False
+if uwsgi:
+    # 表示程式在雲端執行
+    application = app
+else:
+    # 表示在近端執行, 以 python3 wsgi.py 執行
+    app.run(host='127.0.0.1', port=5443, debug=True, ssl_context=context)
+</pre>
+<h4>nginx sites-available/default settings:</h4>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">server {
+    #listen 87 default_server;
+    #listen [::]:87 default_server ipv6only=on;
+ 
+    listen 7443 ssl;
+    #listen [::]:7443 ssl ipv6only=on;
+ 
+    location /static {
+        alias /home/kmol2019/course_studlist/static/;
+    }
+ 
+    location / {
+        include uwsgi_params;
+        uwsgi_pass  127.0.0.1:8087;
+    }
+ 
+    #server_name ipv4_ip;
+    #ssl on;
+    ssl_certificate /etc/stunnel/localhost.crt;
+    ssl_certificate_key /etc/stunnel/localhost.key;
+    ssl_session_timeout 5m;
+    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
+    ssl_prefer_server_ciphers on;
+    try_files $uri $uri/ =404;
+}</pre>
+<h4>uwsgi7.ini</h4>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">[uwsgi]
+socket = 127.0.0.1:8087
+uid = kmol2019
+gid = kmol2019
+plugins-dir = /usr/lib/uwsgi/plugins/
+plugin = python3
+master = true
+logto = /var/log/uwsgi/emperor.log
+logfile-chown = kmol2019:kmol2019
+processes = 4
+threads = 2
+chdir = /home/kmol2019/course_studlist
+wsgi-file = /home/kmol2019/course_studlist/get_student.py</pre>
+<h4>/etc/systemd/system/cmsimfly.service</h4>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">[Unit]
+Description=uWSGI to serve CMSimfly
+After=network.target
+
+[Service]
+User=kmol2019
+Group=kmol2019
+WorkingDirectory=/home/kmol2019/uwsgi_ini
+ExecStart=/usr/local/bin/uwsgi --emperor /home/kmol2019/uwsgi_ini
+
+[Install]
+WantedBy=multi-user.target</pre>
 <p></p><h1>Topics</h1>
 <h4>WCM</h4>
 <p style="padding-left: 30px;">Login to your gm email account and download <a href="https://drive.google.com/file/d/1gLb9_6FEv58wVX2uShG_3sgUseFEcH_y/view?usp=sharing">2020wcm_topic_1.pdf</a>.</p>
@@ -227,7 +360,8 @@ for page in range(len(information)):
         os.makedirs(savepath)
     output_filename = '{}_{}_page_{}.pdf'.format(information[page][0],information[page][1], information[page][2])
     with open(output_filename,'wb') as out:
-        pdf_writer.write(out)</pre>
+        pdf_writer.write(out)
+</pre>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pypdf2_ex2.py
 import os
 from PyPDF2 import PdfFileWriter, PdfFileReader
@@ -246,7 +380,26 @@ for page in range(len(information)):
         os.makedirs(savepath)
     output_filename = '{}_{}_page_{}.pdf'.format(information[page][0],information[page][1], information[page][2])
     with open(output_filename,'wb') as out:
-        pdf_writer.write(out)</pre>
+        pdf_writer.write(out)
+</pre>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pypdf2_ex3.py
+# merge several pdf files
+import sys
+import PyPDF2
+
+pdf_write_object = PyPDF2.PdfFileWriter()
+
+#for i in sys.argv[1:]:
+for i in ["WhatIsCMS.pdf","InforLifeCycle.pdf","EnterpriseContentManage.pdf"]:
+    pdf_read_object = PyPDF2.PdfFileReader(i)
+    print('processing file : '+ i + 'number of pages : ' +  str(pdf_read_object.numPages))
+    for page in range(pdf_read_object.numPages):
+        pdf_write_object.addPage(pdf_read_object.getPage(page))
+
+final_file_object = open('2020CMS.pdf', 'wb')
+pdf_write_object.write(final_file_object)
+final_file_object.close()
+</pre>
 <h4>Python:</h4>
 <p>Learn to Program with Python 3</p>
 <p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-3879-0">https://link.springer.com/book/10.1007/978-1-4842-3879-0</a></p>
