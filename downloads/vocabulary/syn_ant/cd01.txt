@@ -1,0 +1,265 @@
+DesignCollaborationBetterProducts.txt -- Printed on 2/29/2020, 4:04:22 PM -- Page 1
+Create a Better Product With Design Collaboration — Mindset, Tools, Process
+Shaun Moynihan
+Jul 10, 2019
+Digital products are more complex today than ever before. Creating them requires multiple team
+members, each with their own set of skills and expertise. At Savvy, for example, our customers
+work closely with: a product manager, UX designer, visual designer, developer(s), content
+strategist, and a growth specialist.
+We use design collaboration to handle this complexity. Done right, design collaboration empowers
+each of those experts with the mindset, process, and tools to come together and build a better
+product faster.
+We wrote this resource to help other app creators adopt a collaboration culture and process. Read
+on to learn why design collaboration is important for creating compelling products and
+experiences. We'll also dive into the elements of a design collaboration mindset and culture, tools
+for effective design collaboration, and a real-world example of design collaboration at work.
+What is "Design" Collaboration?
+Before we jump into it, we need to get on the same page about what design collaboration is... and
+is not. At its simplest, design collaboration is collaboration in a design-first environment. But,
+because of the nature of design, especially the design we do at Savvy, design collaboration tends
+to go beyond what people normally think of as collaboration.
+While collaboration is generally defined as two or more people working together on the same task
+towards a common goal, design collaboration involves much more.
+Design collaboration includes more people with different skillsets, tougher challenges, and bigger
+goals with farther-reaching impacts.
+You might think of collaboration as two people hanging a piece of art. It simply requires
+communication, teamwork, and four hands. Design collaboration is when a team of curators
+carefully design a visitor's experience. They select the art, choose where and how to hang it, which
+room it lives in (and the room's lighting, furniture), even the preceding rooms and the building as
+a whole.
+Why Design Collaboration is Important
+You can design a product without collaboration, but it takes a collaborative design process to make
+that product great. That's why design collaboration is so fundamental.
+We don't just build apps for our customers. Savvy builds multi-platform experiences, complex
+internal systems, and in some cases, entire brands and businesses. To do so, we leverage expertise
+across several core disciplines: strategy, design, development, and growth. Each project involves
+many people, each with their own skillsets and specialties.
+Design collaboration puts those minds together, combining their separate, specialized expertise to
+create solutions that tackle all aspects of a shared goal. Instead of coming at a problem from one
+angle, design collaboration places that problem in front of all experts, forcing them to consider new
+perspectives and possibilities.
+For example, we involve our developers early on in the design process to make sure we're
+accounting for technical opportunities and limitations as soon as possible. This allows us to take
+I:\DesignCollaborationBetterProducts.txt -- File date: 2/29/2020 -- File time: 4:02:48 PM
+DesignCollaborationBetterProducts.txt -- Printed on 2/29/2020, 4:04:22 PM -- Page 2
+advantage of and push our technical capabilities while eliminating costly roadblocks further in the
+process. It also limits how much a single person can work in a silo, keeping the work in the open
+and the emphasis on the user needs and product goals.
+Cultivating a Design Collaboration Mindset
+The right mindset goes a long way in establishing effective collaboration in the design process. It
+lays the guidelines for who collaborates, how, and to what end.
+COLLABORATION IS FOR EVERYONE
+Designers sometimes think that people who are not designers are not qualified to give good
+feedback. But great design is more than visuals. It encompasses everything about a product, from
+its branding to its engineering to its growth.
+Design collaboration brings in many people, each with their own perspectives and strengths. It
+gives everyone a voice. These fresh perspectives give designers more information. Perspectives
+equip designers to make the right decisions on choices that have lasting impacts on other design,
+development, and marketing options down the road.
+Collaboration with customers is as important as collaboration with other designers and team
+members. At Savvy, we keep our customer involved throughout the creation of their product. We
+take our time to explain options and have discussions with the customer to make sure we
+understand their thoughts.
+This enables us to get buy-in from customers early on and work from clear beginnings and ends.
+Larger reveals aren't big surprises, and no one gets to the point where they're seeing work for the
+first time.
+Customer collaboration means arriving at a more defined product sooner, without costly
+back-stepping and unnecessary meetings.
+It's easy to get caught up in your role and ignore the big picture. By involving more people earlier
+on, you're fostering closer connections with teammates and cultivating a shared responsibility and
+interest in the success of the product. You're creating a more open and transparent process, as
+well a more connected and invested team.
+COLLABORATION IS CONTEXTUAL
+Customers come to us with complex challenges and goals. Not to mention, we continue to work
+with our customers for months, even years, and accumulate vast tomes of knowledge on past
+decisions, research, and other valuable context.
+By adopting a context-first approach, you can make sure everyone is at the highest level of
+knowledge. This enables them to make the most informed decisions as they work on the product.
+To accomplish this, we keep everyone at Savvy updated on relevant information by bringing in all
+team members early, documenting and recording meetings, establishing some overlap, and treating
+the next team member in the process like a customer.
+Context is just as important on a case-by-case collaborative basis. Follow these guidelines to keep
+context first in collaboration:
+Provide context before showing your work. Chances are if your work is on the screen while you're
+giving context, you've lost your audience's attention.
+Describe the problem you're trying to solve or goal you're trying to achieve.
+I:\DesignCollaborationBetterProducts.txt -- File date: 2/29/2020 -- File time: 4:02:48 PM
+DesignCollaborationBetterProducts.txt -- Printed on 2/29/2020, 4:04:22 PM -- Page 3
+Present your work as it relates to the problem at hand. Explain your thinking and why you made
+certain decisions.
+Be specific about what you want feedback on.
+COLLABORATION IS OPEN, HONEST, AND FEARLESS
+It isn't easy to put your work (and yourself) out there. Emotions can get in the way of providing
+open and honest feedback, especially when you're worried about hurting the other person's feelings.
+That doesn't mean there's no place for emotion in collaboration. How something makes you feel is
+important in design. We think of and create solutions for people... people who are emotional, and
+who use emotions in their decisions. Leaving emotion out of the conversation might short-change a
+potential idea or solution. At best, having only a pragmatic discussion around facts and data won't
+provide the full picture. At worst, it may be a red herring or provide a false narrative.
+At Savvy, we empower our team to be "fearless" about receiving feedback. This means letting go
+of any anxieties about being judged for what we create. It also means understanding that we are
+stronger together and stand a greater chance of creating something great. In being fearless, we
+better trust and empower each other to give honest and thoughtful feedback.
+Our team also believes in being fearless about providing feedback. This means understanding the
+problem that needs solving as well as the customer's brand and goals. It also means asking lots of
+questions either to uncover relevant thoughts or to help guide decisions.
+Try presenting feedback in an exploratory and guiding manner, with the intent of building up and
+improving the work rather than tearing it down.
+Tweet This
+Your feedback should be constructive. Instead of saying you don't like something, frame your
+feedback to point back to the problem you're trying to help solve. Provide actionable steps on
+improving the work or at the very least the reasoning behind your thinking. And don't forget to
+express what you like and why.
+COLLABORATION IS MORE THAN NEW IDEAS
+It's one thing to be open and accepting of collaborative feedback, another to parse those thoughts
+and use them as catalysts to spark your own. This is a more advanced skill that develops over
+time. One way to practice this is to become a better listener.
+Often, during a conversation with others, we think more about what we are going to say next rather
+than what others are saying. This impacts the feedback process, especially in design, because we
+often know what we want to say before hearing another opinion or solution.
+When you choose to listen first and react second, it allows you to fully understand the feedback
+someone else is presenting and sets you up to go deeper — what is the perspective they're using
+and the place they're coming from? Chances are this is a perspective you didn't consider during the
+creation process. By listening to and understanding the context and reasoning behind the feedback
+you're receiving, you're opening yourself to more ways of looking at, thinking of, and experiencing
+your design. You can then test these new perspectives against the challenges, goals, and use cases
+you're designing for to see if they better suit the user.
+It's easier to be more receptive of feedback when all collaborators practice active listening.
+Ultimately, the skill of giving great feedback comes from learning how to receive it. As we make an
+effort to be better listeners, we also find ourselves becoming more humble and, in our opinion,
+I:\DesignCollaborationBetterProducts.txt -- File date: 2/29/2020 -- File time: 4:02:48 PM
+DesignCollaborationBetterProducts.txt -- Printed on 2/29/2020, 4:04:22 PM -- Page 4
+better designers.
+Finding and Using the Right Design Collaboration Tools
+The right tools go a long way in reinforcing your team's design collaboration mindset. In this
+section, you'll learn what to look for in collaboration tools. We also recommend tools based on our
+own experiences.
+SELECTING THE RIGHT TOOLS
+Effective collaboration tools remove all barriers for collaborators to quickly and easily access and
+interact with the work. This keeps the focus on giving feedback. They also allow others to
+collaborate on a design without destroying the original.
+In the past, we used relied on tools that provided basic versioning control instead of true
+collaborative features. For example, a designer would save a Sketch file and upload it to Dropbox.
+Another team member would then download it, work on it, and re-upload it. There was no easy way
+to make changes while the file was in another's hands. We tried something similar with Github, a
+tool that proved great for managing codebases, but not so much with iterative design work.
+Needless to say, these version control processes made our collaboration more time consuming,
+confusing, and very un-collaborative.
+Now we choose from a variety of more advanced tools depending on the type of collaboration we
+want to achieve.
+FIGMA
+This is a collaboration-first, shared workspace tool. Figma works well for having multiple people in
+same area of the design file. You can watch teammates design or work together on the same design
+in real time.
+Benefits:
+Figma reduces the ability for someone to work in a silo.
+There's no need to add unnecessary polish or create static deliverables to enable collaboration. So
+you don't need to change your workflow to show off a design.
+It's easy to see and interact with the work in its native environment and apply tweaks at will.
+When to use: Flow docs, high-fidelity wireframes, spur-of-the-moment collaboration, and walking
+customers through a series of screens to explain and get feedback on design direction.
+MARVEL
+While Figma tends to feel more free-form and flexible, Marvel allows for a more standardized form
+of collaboration. It also makes it easy on our customers to collaborate with us.
+Benefits:
+Marvel is a cleaner, more formalized and focused space, great for collaborating with non-design
+team members.
+It removes all need for the customer to pay for an account or have a deep understanding of the tool
+to see the work.
+I:\DesignCollaborationBetterProducts.txt -- File date: 2/29/2020 -- File time: 4:02:48 PM
+DesignCollaborationBetterProducts.txt -- Printed on 2/29/2020, 4:04:22 PM -- Page 5
+Customers can download screens and see them in action on a device environment via the Marvel
+app.
+When to use: Presenting more finalized design work with customers and developers. (Learn about
+how Marvel compares with other prototyping tools.)
+OTHER COLLABORATION TOOLS
+Zeplin is a useful hand-off tool that allows developers to dive into the nitty gritty specs of design
+work. (We talk more in-depth about Zeplin here.)
+Quip is a great platform for brainstorming and product/process documentation. We use it to record
+and organize all of the context and knowledge that team members need to know when working on
+a project. It's also useful for brainstorming new ideas that aren't visual-focused.
+Please note that there are many other tools out there that add similar benefits to collaboration as
+the ones listed above. This list represents the tools that have worked well for us in our day-to-day
+collaboration and is not indicative of all the options that might work well for your team.
+Savvy's Design Collaboration Process in Practice
+Now let's take the best practices and tools outlined above and show how they fit together in a
+real-life situation. We'll use the live drawing experience in the Press Play app to demonstrate the
+importance of design collaboration. This experience involved significant collaboration from a
+number of team members across disciplines, including a visual designer, UX designer, developer,
+product manager, and of course, the customer.
+THE CONTEXT AND CHALLENGE
+Press Play is a sweepstakes app that holds daily, weekly, and monthly drawings. Users earn tickets
+by watching ads and enter drawings by selecting five emojis. Winners are then rewarded based on
+how their choices match up with the drawing's randomly-selected emojis. This particular task had
+us creating a fun and exciting live experience for users awaiting the results of the live drawing.
+It was important for us to create a game-like animation for this experience. We especially wanted
+to evoke a sense of playfulness and anticipation on the screen where users go to see how their
+chosen emojis match up with those from the sweepstakes drawing.
+That said, we needed to be mindful of the level of complexity an animation requires and its impact
+on the overall product's timeline and cost. Our goal was to push the level of fidelity within a
+reasonable time without significantly impacting the project's budget.
+THE COLLABORATIVE PROCESS
+Stage 1: Wireframes and Brainstorming
+First, a Savvy UX designer created Press Play's overall UX and wireframes, determining what
+screens were needed and the timing for each one. She also put together a rough concept (shown
+right) for the live drawing animation, expressing initial ideas based on customer's needs and the
+project's established UX.
+She presented the wireframes and the rough animation to the product manager and visual
+designer. Then all three met with the customer so everyone would hear the feedback directly.
+Stage 2: Research and Context
+I:\DesignCollaborationBetterProducts.txt -- File date: 2/29/2020 -- File time: 4:02:48 PM
+DesignCollaborationBetterProducts.txt -- Printed on 2/29/2020, 4:04:22 PM -- Page 6
+The Savvy visual designer tasked with creating the actual live drawing animation came in with
+fresh eyes and without much prior knowledge of the Press Play product. To get up to speed, he
+talked in depth with the UX designer and product manager. He also dedicated additional research
+time to understand the overall product goals, challenges, and to familiarize himself with the work
+to date. As mentioned earlier, he was part of the wireframe presentation and present for the
+customer's feedback.
+With that context, he conducted some additional research more directly related to the task at hand.
+In doing so, he made sure he understood the live drawing experience requirements, goals, and
+challenges. He looked at other apps with similar experiences and fidelity and referenced the rough
+animation to know what exactly the final animation needed to show (in this case, the winning
+emojis and the user's emoji selections). Before getting too tied to a solution, he met with a Savvy
+iOS developer to understand technical constraints and considerations.
+Our visual designer and UX designer then brainstormed what was important for the visuals. They
+agreed that there needed to be a slow reveal to build up suspense/anticipation for the user
+Stage 3: Iteration and Feedback
+As our visual designer worked through a number of different directions he tapped the UX designer
+to chat through his progress and designs in Figma. By talking through the work they spurred more
+ideas and iterations while making sure they were staying true to customer expectations. With more
+solid options at hand, he met once again with the iOS developer to make sure everything was in
+line from a technical perspective.
+Stage 4: Customer Feedback and Development
+When we landed on several, more finalized versions of the experience, the visual designer walked
+through them with the customer using Figma. The product manager and UX designer for Press Play
+provided feedback and guidance as well.
+Once they all learned what piqued the customer's interest, the visual designer set off to maximize
+the visuals and make them ready for development. He continued to work with the iOS developer to
+get the most out of the concept on a technical level.
+THE END RESULT
+Press Play's live drawing animation is an example of design collaboration at work; a team of
+cross-discipline experts working together to solve a design and development challenge with bigger
+implications. Without design collaboration, we wouldn't have discovered the ideal intersection of
+user experience, visual, and technical.
+When the customer saw the animation alive in his app he called it "groundbreaking."
+What’s more, the research, collaboration, and creation of this Press Play experience helped us
+discover a gap in the product’s user journey. Originally, the live drawing’s intent was to be a fun
+way to show the results to users. As we moved through the design process, we realized that if a
+user doesn’t watch the live drawing, and they lose, they don’t get to experience an end to their
+user journey for that drawing.
+From that discovery, we decided to improve the app in a couple of other places as well. We added a
+results/live drawing element to the Winner’s Circle and a win-lose history section to the User
+Details side of the app. In the end, design collaboration empowered us to realize this unfulfilled
+need in the user experience.
+Concluding Note
+I:\DesignCollaborationBetterProducts.txt -- File date: 2/29/2020 -- File time: 4:02:48 PM
+DesignCollaborationBetterProducts.txt -- Printed on 2/29/2020, 4:04:22 PM -- Page 7
+It takes design collaboration to tackle the complex, crucial problems that come along with building
+great products and experiences. By leveraging the specialized expertise of multiple team members
+across disciplines, design collaboration makes sure teams meet challenges from all perspectives
+and come to better solutions. With the right mindset, tools, and process, design collaboration
+empowers teams to go deeper with creative thinking and iteration.
+We hope this guide gives you a good foundation from which you can build your own effective design
+collaboration process. You can learn more about design and product strategy on the Savvy blog,
+and feel free to contact us for help on the Savvy Apps website.
+I:\DesignCollaborationBetterProducts.txt -- File date: 2/29/2020 -- File time: 4:02:48 PM

@@ -124,7 +124,7 @@ class Concordancer:
 
 concord = Concordancer()
 
-file = '51155-0.txt'
+file = 'cd01.txt'
 
 f = open(file,'rt',encoding="utf-8")
 data = f.read()#the whole file as one big string
