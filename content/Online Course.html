@@ -174,6 +174,9 @@ img.add_border {
 <p><a href="https://drive.google.com/open?id=1wYudC9_GmYNGPKOZdjFPOjf4-wRjbnTD">wcm w8 第一段錄影</a></p>
 <p><a href="https://drive.google.com/open?id=1g7aZExbXcNQndsqszeXG2wHflhPWrspk">wcm w8 第二段錄影</a></p>
 <p><a href="https://drive.google.com/open?id=1uwFqkY_LJs2HdhVDOJyyIKc-3QdseJuu">wcm w8 第三段錄影</a></p>
+<p>當使用 git 指令 push 時, Windows 跳出要求使用者登入 github 的帳號與密碼視窗時, 一旦在此視窗輸入帳號與密碼, Windows 會將此帳號密碼登錄在操作系統中. 為了達到使用可攜的目錄, 可以利用下列指令:</p>
+<p style="padding-left: 30px;">git config --edit --system </p>
+<p>以 vi 編輯器將 credential -&gt; helper 欄位刪除後存檔, 之後 git 便不會再要求 Windows 操作系統代存使用者的相關帳號與密碼.</p>
 <h4><span>Python and Flask</span></h4>
 <p style="padding-left: 30px;"><span>Login to your gm email account and download <a href="https://drive.google.com/file/d/17_LCSvwgtnIG8FnpezfUlEdbo3Y6G6CP/view?usp=sharing">2019_ABeginnersGuideToPython3Programming.pdf</a></span></p>
 <p style="padding-left: 30px;"><span>Login to your gm email account and download <a href="https://drive.google.com/file/d/1u3PHIbGWz3r4bct_molJg8FODkS8tf02/view?usp=sharing">2019_BuildingRESTAPIsWithFlask.pdf</a></span></p>
