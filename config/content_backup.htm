@@ -354,6 +354,9 @@ WantedBy=multi-user.target</pre>
 <p><a href="https://drive.google.com/open?id=1wYudC9_GmYNGPKOZdjFPOjf4-wRjbnTD">wcm w8 第一段錄影</a></p>
 <p><a href="https://drive.google.com/open?id=1g7aZExbXcNQndsqszeXG2wHflhPWrspk">wcm w8 第二段錄影</a></p>
 <p><a href="https://drive.google.com/open?id=1uwFqkY_LJs2HdhVDOJyyIKc-3QdseJuu">wcm w8 第三段錄影</a></p>
+<p>當使用 git 指令 push 時, Windows 跳出要求使用者登入 github 的帳號與密碼視窗時, 一旦在此視窗輸入帳號與密碼, Windows 會將此帳號密碼登錄在操作系統中. 為了達到使用可攜的目錄, 可以利用下列指令:</p>
+<p style="padding-left: 30px;">git config --edit --system </p>
+<p>以 vi 編輯器將 credential -&gt; helper 欄位刪除後存檔, 之後 git 便不會再要求 Windows 操作系統代存使用者的相關帳號與密碼.</p>
 <h4><span>Python and Flask</span></h4>
 <p style="padding-left: 30px;"><span>Login to your gm email account and download <a href="https://drive.google.com/file/d/17_LCSvwgtnIG8FnpezfUlEdbo3Y6G6CP/view?usp=sharing">2019_ABeginnersGuideToPython3Programming.pdf</a></span></p>
 <p style="padding-left: 30px;"><span>Login to your gm email account and download <a href="https://drive.google.com/file/d/1u3PHIbGWz3r4bct_molJg8FODkS8tf02/view?usp=sharing">2019_BuildingRESTAPIsWithFlask.pdf</a></span></p>
@@ -364,7 +367,11 @@ WantedBy=multi-user.target</pre>
 <p style="padding-left: 30px;"><span><a href="https://github.com/topics/pypdf2">https://github.com/topics/pypdf2</a> <br/></span></p>
 <p style="padding-left: 30px;"><span><a href="https://flask.palletsprojects.com/en/1.1.x/patterns/fileuploads/">https://flask.palletsprojects.com/en/1.1.x/patterns/fileuploads/</a> <br/></span></p>
 <p style="padding-left: 30px;"><span><a href="https://www.google.com/search?q=flask+sqlite">Flask 與 SQLite</a></span></p>
-<p><span>目標 : 建立一個網際 PDF 檔案編修服務系統</span></p><h1>Dartpad</h1>
+<p><span>目標 : 建立一個網際 PDF 檔案編修服務系統</span></p><h2>Ubuntu</h2>
+<h4>Ubuntu Server (3GB)</h4>
+<p>從 <a href="https://ubuntu.com/download/server">https://ubuntu.com/download/server</a> 下載 Ubuntu Server 20.04 iso 檔案, 利用 <a href="https://www.virtualbox.org/">Virtualbox</a> 建立成虛擬主機檔案.</p>
+<h4>安裝 Mate 桌面系統 (1.8GB)</h4>
+<p style="padding-left: 30px;">sudo apt install mate-desktop-environment </p><h1>Dartpad</h1>
 <p>Notice: the <a href="https://developer.github.com/apps/building-github-apps/understanding-rate-limits-for-github-apps/">rate limits of Github Apps</a></p>
 <p style="padding-left: 30px;"><a href="https://developer.github.com/v3/rate_limit/">Github rate limits</a></p>
 <p style="padding-left: 30px;"><a href="https://docs.gitlab.com/ee/security/rate_limits.html">Gitlab rate limits setup</a></p>
