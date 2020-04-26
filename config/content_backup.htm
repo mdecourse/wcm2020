@@ -5,6 +5,7 @@
 <p>Web site: <a href="https://mde.tw/wcm2020">https://mde.tw/wcm2020</a> </p>
 <p>Blog: <a href="https://mde.tw/wcm2020/blog">https://mde.tw/wcm2020/blog</a> </p>
 <p>Presentation:  <a href="https://mde.tw/wcm2020/reveal">https://mde.tw/wcm2020/reveal</a> </p>
+<p>參考: <a href="https://mde.tw/cd2020pj1">https://mde.tw/cd2020pj1</a></p>
 <h4><span><a href="https://drive.google.com/open?id=1cZFSsLEoGOBYojzKzFEf4YH2l--pbS-9"></a></span>電腦輔助設計室與協同設計室行事曆</h4>
 <p><a href="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei">全頁檢視</a></p>
 <p><iframe height="600" src="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei" width="800"></iframe></p>
@@ -382,7 +383,31 @@ WantedBy=multi-user.target</pre>
 <h4>安裝 Graphical Environment (1GB)</h4>
 <p style="padding-left: 30px;">sudo apt install xorg</p>
 <h4>安裝 LXDE Window Manager (800 MB)</h4>
-<p style="padding-left: 30px;">sudo apt install lxde</p><h1>Dartpad</h1>
+<p style="padding-left: 30px;">sudo apt install lxde</p>
+<h4> 安裝 CMSiMDE 所需的 modules</h4>
+<p style="padding-left: 30px;">sudo pip3 install flask flask_cors lxml bs4 markdown pelican leo</p>
+<h4>安裝開發 Oauth2 所需模組</h4>
+<p style="padding-left: 30px;">sudo pip3 install authomatic github3.py</p>
+<h4>安裝 CoppeliaSim</h4>
+<p style="padding-left: 30px;">從 <a href="https://www.coppeliarobotics.com/ubuntuVersions">https://www.coppeliarobotics.com/ubuntuVersions</a>  下載 edu Linux 版本, 解開壓縮檔案後, 透過 coppelia.sh 執行.</p>
+<h4>安裝 numpy, opencv-python 與 imutils 等 Python 3 模組, 用於影像辨識程式開發</h4>
+<p style="padding-left: 30px;">sudo pip3 install numpy opencv-python imutils</p>
+<h4>編譯 Pyslvs-UI</h4>
+<h4>編譯 Range3</h4>
+<p style="padding-left: 30px;">git clone <a href="https://github.com/Range-Software/range3.git">https://github.com/Range-Software/range3.git</a></p>
+<p style="padding-left: 30px;">cd range3</p>
+<p style="padding-left: 30px;">sudo ./scripts/prereqs_debian.sh</p>
+<p style="padding-left: 30px;">./scripts/build.sh --clean &amp;&amp; ./scripts/create_package.sh</p>
+<p style="padding-left: 30px;">執行</p>
+<p style="padding-left: 30px;">cd build-Release/Range/</p>
+<p style="padding-left: 30px;">./Range</p>
+<p>修改所有用戶的指令搜尋路徑</p>
+<p style="padding-left: 30px;">編輯 /etc/profile</p>
+<p style="padding-left: 30px;">加入</p>
+<p style="padding-left: 30px;">export PATH=/home/kmol2020/tmp/range3/build-Release/Range:PATH</p>
+<p style="padding-left: 30px;">之後</p>
+<p style="padding-left: 30px;">source /etc/profile</p>
+<p style="padding-left: 30px;">接下來只要輸入 Range 就可以開啟 Range3</p><h1>Dartpad</h1>
 <p>Notice: the <a href="https://developer.github.com/apps/building-github-apps/understanding-rate-limits-for-github-apps/">rate limits of Github Apps</a></p>
 <p style="padding-left: 30px;"><a href="https://developer.github.com/v3/rate_limit/">Github rate limits</a></p>
 <p style="padding-left: 30px;"><a href="https://docs.gitlab.com/ee/security/rate_limits.html">Gitlab rate limits setup</a></p>
