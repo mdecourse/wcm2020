@@ -380,6 +380,7 @@ WantedBy=multi-user.target</pre>
 <p><br/><br/></p><h2>Ubuntu</h2>
 <p>以下為建立 Ubuntu 20.04 虛擬主機, 用於網際內容管理, 電腦輔助設計實習與協同產品設計實習課程, 作爲區域網路或廣域網路伺服器主機課程練習之用.</p>
 <p>由於每一台 Virtualbox 最多可以設定支援 36 片網路卡, 而且設定檔案可以透過程式方法控制各種設定, 因此適合用於上述課程中相關網際應用程式的部署使用, 也可以作為之後將網際程式配置到實體主機, 雲端主機或分散式版次管理系統 CI/CD 配置模擬.</p>
+<p style="padding-left: 30px;">請登入 ＠gm 帳號後下載 <a href="https://drive.google.com/open?id=1lnMvowqRTWVgfaMClj2skGjURi148n71">Ubuntu20.04_cd2020pj1.vdi</a> (11 GB, 用於 CMSiMDE, CoppeliaSim, Pyslvs, Range3, NGSolve, Jupyter 網際程式開發)</p>
 <p>因為在 Virtualbox 中的每一個虛擬硬碟檔案, 都必須要有獨立的 UUID, 因此若複製虛擬硬碟檔案, 而且要在同一電腦上使用, 可以使用下列指令變更 UUID:</p>
 <p style="padding-left: 30px;">"c:\Program Files\Oracle\VirtualBox\VBoxManage.exe" internalcommands sethduuid registered_vdi.vdi</p>
 <h4>Ubuntu Server (3GB)</h4>
@@ -395,6 +396,10 @@ WantedBy=multi-user.target</pre>
 <p style="padding-left: 30px;">sudo pip3 install authomatic github3.py</p>
 <h4>安裝 CoppeliaSim</h4>
 <p style="padding-left: 30px;">從 <a href="https://www.coppeliarobotics.com/ubuntuVersions">https://www.coppeliarobotics.com/ubuntuVersions</a>  下載 edu Linux 版本, 解開壓縮檔案後, 透過 coppelia.sh 執行.</p>
+<p style="padding-left: 30px;">為了能直接在 Terminal 執行 CoppeliaSim 目錄中的 coppelia.sh, 可以編輯 /etc/profile</p>
+<p style="padding-left: 30px;">加入 CoppeliaSim 所在目錄:</p>
+<p style="padding-left: 30px;">export PATH=/home/kmol2020/coppeliasim4:PATH</p>
+<p style="padding-left: 30px;">然後以 source /etc/profile 讓命令搜尋路徑設定生效.</p>
 <h4>安裝 numpy, opencv-python 與 imutils 等 Python 3 模組, 用於影像辨識程式開發</h4>
 <p style="padding-left: 30px;">sudo pip3 install numpy opencv-python imutils</p>
 <h4>編譯 Pyslvs-UI</h4>
