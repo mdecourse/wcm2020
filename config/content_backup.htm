@@ -376,7 +376,12 @@ WantedBy=multi-user.target</pre>
 <p><a href="https://drive.google.com/open?id=143jFMheM1xjLxhLkSAouThLzj3WUYX6_">Ubuntu 20.04 Virtualbox</a> 下載, 可用於 CMSiMDE, Oauth2 and CoppeliaSim RemoteAPI 開發 (請登入 @gm 帳號後下載)</p>
 <p>安裝步驟請根據上課說明進行.</p><h2>Virtualbox</h2>
 <p>更改 win10_64_comsol5.5.vmdk 的 UUID</p>
-<p>"c:\Program Files\Oracle\VirtualBox\VBoxManage.exe" internalcommands sethduuid win10_64_comsol5.5.vmdk</p><h2>Ubuntu</h2>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">"c:\Program Files\Oracle\VirtualBox\VBoxManage.exe" internalcommands sethduuid win10_64_comsol5.5.vmdk</pre>
+<p><br/><br/></p><h2>Ubuntu</h2>
+<p>以下為建立 Ubuntu 20.04 虛擬主機, 用於網際內容管理, 電腦輔助設計實習與協同產品設計實習課程, 作爲區域網路或廣域網路伺服器主機課程練習之用.</p>
+<p>由於每一台 Virtualbox 最多可以設定支援 36 片網路卡, 而且設定檔案可以透過程式方法控制各種設定, 因此適合用於上述課程中相關網際應用程式的部署使用, 也可以作為之後將網際程式配置到實體主機, 雲端主機或分散式版次管理系統 CI/CD 配置模擬.</p>
+<p>因為在 Virtualbox 中的每一個虛擬硬碟檔案, 都必須要有獨立的 UUID, 因此若複製虛擬硬碟檔案, 而且要在同一電腦上使用, 可以使用下列指令變更 UUID:</p>
+<p style="padding-left: 30px;">"c:\Program Files\Oracle\VirtualBox\VBoxManage.exe" internalcommands sethduuid registered_vdi.vdi</p>
 <h4>Ubuntu Server (3GB)</h4>
 <p>登入 @gm 帳號後, 下載 <a href="https://drive.google.com/open?id=1bUVxVBnMf1mxijl-iP-Sj19n8ASzqOF3">ubuntu-20.04-live-server-amd64.iso</a></p>
 <p>或從 <a href="https://ubuntu.com/download/server">https://ubuntu.com/download/server</a> 下載 Ubuntu Server 20.04 iso 檔案, 利用 <a href="https://www.virtualbox.org/">Virtualbox</a> 建立成虛擬主機檔案.</p>
@@ -407,7 +412,26 @@ WantedBy=multi-user.target</pre>
 <p style="padding-left: 30px;">export PATH=/home/kmol2020/tmp/range3/build-Release/Range:PATH</p>
 <p style="padding-left: 30px;">之後</p>
 <p style="padding-left: 30px;">source /etc/profile</p>
-<p style="padding-left: 30px;">接下來只要輸入 Range 就可以開啟 Range3</p><h1>Dartpad</h1>
+<p style="padding-left: 30px;">接下來只要輸入 Range 就可以開啟 Range3</p>
+<h4>安裝 NGSolve</h4>
+<p style="padding-left: 30px;">sudo apt-add-repository universe<br/><br/>sudo add-apt-repository ppa:ngsolve/ngsolve</p>
+<p style="padding-left: 30px;">sudo apt-get update<br/><br/>sudo apt-get install ngsolve</p><h3>Netplan</h3>
+<p>若在 Windows 10 中啟動 Virtualbox Ubuntu 20.04 則可將網路設為 Host Only, 不使用 DHCP, 而進入 Ubuntu 之後, 以 netplan 手動設定在 Windows 10 可以連線的區域網路.</p>
+<p>例如: Windows Gateway 設為 192.168.56.1, 而 Host Only 虛擬主機設為 192.168.56.2</p>
+<p>/etc/netplan/00-installer-config.yaml</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp3s0:
+      dhcp6: true
+      addresses:
+        - 10.10.10.2/24
+      gateway4: 10.10.10.1
+      nameservers:
+          search: [mydomain, otherdomain]
+          addresses: [10.10.10.1, 1.1.1.1]</pre>
+<p></p><h1>Dartpad</h1>
 <p>Notice: the <a href="https://developer.github.com/apps/building-github-apps/understanding-rate-limits-for-github-apps/">rate limits of Github Apps</a></p>
 <p style="padding-left: 30px;"><a href="https://developer.github.com/v3/rate_limit/">Github rate limits</a></p>
 <p style="padding-left: 30px;"><a href="https://docs.gitlab.com/ee/security/rate_limits.html">Gitlab rate limits setup</a></p>
