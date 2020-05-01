@@ -1,380 +1,160 @@
-<h1>About</h1>
-<p>Repository: <a href="https://github.com/mdecourse/wcm2020">https://github.com/mdecourse/wcm2020</a></p>
-<p>Project: <a href="https://github.com/mdecourse/wcm2020/projects/1">https://github.com/mdecourse/wcm2020/projects/1</a></p>
-<p>Gitter: <a href="https://gitter.im/mdecourse/wcm2020">https://gitter.im/mdecourse/wcm2020</a></p>
-<p>Web site: <a href="https://mde.tw/wcm2020">https://mde.tw/wcm2020</a> </p>
-<p>Blog: <a href="https://mde.tw/wcm2020/blog">https://mde.tw/wcm2020/blog</a> </p>
-<p>Presentation:  <a href="https://mde.tw/wcm2020/reveal">https://mde.tw/wcm2020/reveal</a> </p>
-<p>參考: <a href="https://mde.tw/cd2020pj1">https://mde.tw/cd2020pj1</a></p>
-<h4><span><a href="https://drive.google.com/open?id=1cZFSsLEoGOBYojzKzFEf4YH2l--pbS-9"></a></span>電腦輔助設計室與協同設計室行事曆</h4>
-<p><a href="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei">全頁檢視</a></p>
-<p><iframe height="600" src="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei" width="800"></iframe></p>
-<p>請登入 gm 電子郵箱後, 填寫下列表單:</p>
-<p style="padding-left: 30px;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfetOEX-l_KYPUZuUuPft5IC1t-FttkoX1s_Nh9FRxYZXKYWA/viewform?usp=sf_link">選課學員基本資料</a></p>
-<p style="padding-left: 30px;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdSvo89BOMfQOxFflhx-b3eDa_kYP0lUkTLfotdr1AEyQbItw/viewform?usp=sf_link">課程回饋表單</a></p>
-<p style="padding-left: 30px;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfzbBnD7-GL2Nc41vmu2vGB6foETL0cNJpg7yrnMaHCqjRA9w/viewform?usp=sf_link">網際內容管理自評與互評表單</a></p><h1>Grouping</h1>
-<h4>亂數分組:</h4>
-<p><a href="https://mde.tw/wcm2020/downloads/2020spring_wcm_1a_list.txt">https://mde.tw/wcm2020/downloads/2020spring_wcm_1a_list.txt</a> was taken from <a href="https://osa.nfu.edu.tw/">https://osa.nfu.edu.tw/</a> on Feb. 19, 2020.</p>
-<p>The most updated list: <a href="http://s1.mde.nfu.edu.tw:8000/?semester=1082&amp;courseno=0744">http://s1.mde.nfu.edu.tw:8000/?semester=1082&amp;courseno=0744</a> </p>
-<p>semester: 1082</p>
-<p>courseno: 0744</p>
-<p>Under https protocol use port 7443, for http use port 8000.</p>
-<p>學員名單 URL: <input id="studListUrl" size="70" type="text" value="http://s1.mde.nfu.edu.tw:8000/?semester=1082&amp;courseno=0744 "/><br/> <input id="submit" type="submit" value="開始分組"/><br/> <textarea cols="80" id="output" rows="10"></textarea></p>
-<script src="https://mde.tw/wcm2020/downloads/dart_ex/even_grouping/evenGrouping.js"></script>
-<p><a href="https://dartpad.github.io/embed-html.html?gh_owner=mdecourse&amp;gh_repo=cd2020&amp;gh_path=downloads/dart_ex/even_grouping&amp;theme=dark">Dart source code for random grouping</a></p>
-<h4>evenGrouping.dart:</h4>
-<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">import 'dart:html';
- 
-  InputElement studListUrl = querySelector("#studListUrl");
-  String studUrl;
-  // 將 Label 改為 Textarea, 避免產生過程結果嵌入所在頁面
-  TextAreaElement output = querySelector("#output");
- 
-main() {
-  querySelector("#submit").onClick.listen((e) =&gt; grouping());
+<!DOCTYPE html><html>
+        <head>
+        <title>WCM2020 網際內容管理系統</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/magnific-popup.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/jquery-ui.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/flaticon/font/flaticon.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/aos.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/style.css">
+        <link rel="shortcut icon" href="./../cmsimde/static/favicons.png">
+        
+        <style type='text/css'>
+            .site-section {
+            background-color: #FFFF;
+            padding: 40px 40px;
+            }
+            body > div > div.dropdown.open {
+                display: block;
+            }
+        </style>
+    
+        <!-- <script src="./../cmsimde/static/jquery.js"></script> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+        <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/normalize.min.css">
+        <script src="./../cmsimde/static/tipuesearch/tipuesearch_set.js"></script>
+        <script src="tipuesearch_content.js"></script>
+        <link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/tipuesearch.css">
+        <script src="./../cmsimde/static/tipuesearch/tipuesearch.js"></script>
+        <script>
+            /* original tipuesearch
+            $(document).ready(function() {
+                 $('#tipue_search_input').tipuesearch();
+            });
+            */
+            // customed doSearch
+            function doSearch() {
+                $('#tipue_search_input').tipuesearch({
+                    newWindow: true, 
+                    minimumLength: 2,
+                    wholeWords: false, // for search 中文
+                });
+            }
+            $(document).ready(doSearch);
+        </script>
+        
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushHaxe.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushLua.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCpp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushDart.js"></script>
+<link type="text/css" rel="stylesheet" href="./../cmsimde/static/syntaxhighlighter/css/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- 啟用 LaTeX equations 編輯 -->
+<script src="https://scrum-3.github.io/web/math/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+            },
+            displayAlign: 'left', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
 }
- 
-grouping() {
-  output.innerHtml = "";
- 
-  if (studListUrl.value != "") {
-    studUrl = studListUrl.value;
-  } else {
-    studUrl = 'https://mde.tw/group/downloads/2019fall_cp_1a_list.txt';
-  }
- 
-  // 組序由 1 開始
-  int gth = 1;
-  // 迴圈序號變數
-  int i;
-  int j;
-  int total;
-  int inc;
-  // 每組學員暫存數列
-  var gpList = [];
-  // 全班分組數列
-  var group = [];
-  // 各組人數數列
-  var numList = [];
-  var courseTitle = 'wcm2020';
- 
-  HttpRequest.getString(studUrl).then((String resp) {
-    // 利用 trim() 去除字串最後的跳行符號, 之後再利用 split() 根據 \n 轉為數列
-    var studList = resp.trim().split("\n");
-    // 數列利用 shuffle() 方法以隨機方法弄亂順序
-    studList.shuffle();
-    total = studList.length;
-    output.text += "全班總計" + total.toString() + " 人\n";
-    numList = getNumList(studList.length);
-    inc = 0;
-    for (i in numList){
-      // 列印區隔符號
-      output.text += '=' * 20 + "\n";
-      output.text += "group $gth 有 " + i.toString() + " 人: \n";
-      gpList = [];
-      for (j = 0; j &lt; i; j++){
-        output.text += studList[j+inc] + "\n";
-        // 在各分組數列中加入將對應的學員學號
-        gpList.add(studList[j+inc]);
-      }
-      gth = gth + 1;
-      inc = inc + j;
-        //output.text += studList[j] + "\n";
-        // 逐步將各組暫存的分組數列加入全班分組數列中
-      gpList.sort();
-      group.add(gpList);
-    }
-    // 列出全班分組數列
-    output.text += group.toString() + "\n";
-    // 列出已經排序後的分組名單
-    output.text += '=' * 25 + "\n";
-    output.text += '以下為排序後的各組成員名單: \n';
-    gth = 1;
-    /*
-    404231
-    s4052
-    4062
-    s4072
-    4082
-    5072
-    5083
-    */
-    // 先列出純文字以 \n 跳行組員資料
-    for (i=0; i &lt; group.length; i++){
-      // 列印區隔符號
-      output.text += '=' * 20 + "\n";
-      output.text += "group $gth \n";
-      gpList = [];
-      for (j=0; j &lt; group[i].length; j++){
-        output.text += group[i][j] + "\n";
-      }
-      gth = gth + 1;
-    }
-    
-    gth = 1;
-    // 最後列出超文件以 &lt;br\&gt; 跳行組員資料, 包含倉儲與網站
-    for (i=0; i &lt; group.length; i++){
-      // 列印區隔符號
-      output.text += '\n' + '=' * 30 + "&lt;br \&gt;";
-      output.text += "group $gth &lt;br \&gt;";
-      gpList = [];
-      for (j=0; j &lt; group[i].length; j++){
-          if (group[i][j].startsWith('4052') || group[i][j].startsWith('4072')) {
-              output.text += "Repository: &lt;a href='https://github.com/s" + 
-                                      group[i][j] + "/" + courseTitle + "'&gt;" + group[i][j] + 
-                                      "&lt;/a&gt;" + " | Site: &lt;a href='https://s" + group[i][j] + 
-                                      ".github.io/" + courseTitle + "'&gt;" + group[i][j] + 
-                                      "&lt;/a&gt;&lt;br \&gt;";
-          }
-          else {
-              output.text += "Repository: &lt;a href='https://github.com/" + 
-                                      group[i][j] + "/" + courseTitle +"'&gt;" + group[i][j] + 
-                                      "&lt;/a&gt;" + " | Site: &lt;a href='https://" + group[i][j] + 
-                                      ".github.io/" + courseTitle + "'&gt;" + group[i][j] + 
-                                      "&lt;/a&gt;&lt;br \&gt;";
-          }
-      }
-      gth = gth + 1;
-    }
-  });
+init_mathjax();
+</script>
+
+<!-- 暫時不用
+<script src="./../cmsimde/static/fengari-web.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/Cango-13v08-min.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/CangoAxes-4v01-min.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/gearUtils-05.js"></script>
+-->
+<!-- for Brython 暫時不用
+<script src="https://scrum-3.github.io/web/brython/brython.js"></script>
+<script src="https://scrum-3.github.io/web/brython/brython_stdlib.js"></script>
+-->
+<style>
+img.add_border {
+    border: 3px solid blue;
 }
- 
-List getNumList(int total){
-  // total student number
-  // int total = 65;
-  // initial each group expect to be "eachGrp" number of people
-  int eachGrp = 10;
-  // may divide into "grpNum" number of group
-  int grpNum = total ~/ eachGrp;
-  // vacant list
-  var splits = [];
-  // find remainder when total number divid into "grpNum" number of group
-  int remainder = total % grpNum;
-  // number of people in one group by calculation
-  int calGrp = total ~/ grpNum;
- 
-  for (int i = 0; i &lt; grpNum; i++) {
-    splits.add(calGrp);
-  }
-  //print(splits);
- 
-  for (int i = 0; i &lt; remainder; i++) {
-    splits[i] += 1;
-  }
-  //print(splits);
-  return splits;
- }</pre>
-<h4>index.html:</h4>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;h1&gt;亂數分組:&lt;/h1&gt;
-學員名單 URL: &lt;input type="text" id="studListUrl" size="50" value="https://mde.tw/wcm2020/downloads/2020spring_wcm_1a_list.txt"&gt;&lt;br /&gt;
-&lt;input type="submit" value="開始分組" id="submit"&gt;&lt;br /&gt;
-&lt;textarea id="output" cols="80" rows="10"&gt;&lt;/textarea&gt;</pre>
-<h4>style.css:</h4>
-<pre class="brush:css;auto-links:false;toolbar:false" contenteditable="false">body {
-  color: white;
-  font-size: 20px;
-}
+</style>
 
-input, select, textarea {
-font-size: 100%;
-}</pre>
-<h4>get_student.py</h4>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask, request 
-from flask_cors import CORS
+</head>
+<body>
+<div class='container'><nav>
+        
+    <div class="site-wrap">
 
-import requests
-import bs4
-import ssl
-
-'''
-https://s1.mde.nfu.edu.tw:7443/?semester=1082&amp;courseno=0767
-cd
-2a 1082/0767
-2b 1082/0780
-
-2a 1072/0777
-2b 1072/0790
-2a 1062/0788
-2a 1062/0802
-
-wcm
-1082/0744
-
-1072/0754
-1062/0765
-
-wcmj
-1082/2418
-'''
-
-app = Flask(__name__)
-CORS(app)
-
-@app.route('/studlist')
-@app.route('/')
-def studlist():
-    semester = request.args.get('semester')
-    courseno = request.args.get('courseno')
-    if semester == None:
-        semester = '1082'
-    if courseno == None:
-        courseno = '0744'
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
     
-    url = 'https://osa.nfu.edu.tw/query/studlist_ajax.php'
-    post_var = {'pselyr': semester, 'pseqno': courseno}
+            <header class="site-navbar py-4 bg-white" role="banner">
+              <div class="container-fluid">
+                <div class="row align-items-center">
+                <h1>2020 Spring 網際內容管理</h1>
+                <div class="pl-4">
+                    <form>
+                    <input type="text" placeholder="Search" name="q" id="tipue_search_input" pattern=".{2,}" title="At least 2 characters" required>
+                    </form>
+                </div>
+                  <!-- <div class="col-11 col-xl-2">
+                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">2020 Spring 網際內容管理</a></h1> 
+                  </div>
+                  -->
+                  <div class="col-12 col-md-10 d-none d-xl-block">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+    <ul class='site-menu js-clone-nav mr-auto d-none d-lg-block'>
+                        <li class="active has-children"><a href="index.html">Home</a>
+                        <ul class="dropdown">
+                            <li><a href="sitemap.html">Site Map</a></li>
+                            <li><a href="./../reveal/index.html">reveal</a></li>
+                            <li><a href="./../blog/index.html">blog</a></li>
+                        </ul>
+                      </li>
+                     <li><a href='About.html'>About</a><li class='has-children'><a href='Grouping.html'>Grouping</a><ul class='dropdown'><li><a href='1a.html'>1a</a></li></ul><li class='has-children'><a href='Topics.html'>Topics</a><ul class='dropdown'><li><a href='Online Course.html'>Online Course</a><li><a href='MDETools.html'>MDETools</a><li><a href='Python.html'>Python</a><li><a href='Virtualbox.html'>Virtualbox</a><li class='has-children'><a href='Ubuntu.html'>Ubuntu</a><ul class='dropdown'><li><a href='Netplan.html'>Netplan</a></li></li></ul></ul><li><a href='Dartpad.html'>Dartpad</a><li class='has-children'><a href='Project.html'>Project</a><ul class='dropdown'><li><a href='Tools.html'>Tools</a><li><a href='Python as backend.html'>Python as backend</a><li><a href='Dart as backend.html'>Dart as backend</a><li><a href='Threejs.html'>Threejs</a><li><a href='WebVR.html'>WebVR</a></li>
+                      </ul>
+                </nav>
+              </div>
+              <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+              </div>
 
-    result = requests.post(url, data = post_var)
-
-    soup = bs4.BeautifulSoup(result.content, 'lxml')
-    table = soup.find('table', {'class': 'tbcls'})
-    data = []
-    rows = table.find_all('tr')
-    for row in rows:
-        cols = row.find_all('td')
-        cols = [ele.text.strip() for ele in cols]
-        data.append([ele for ele in cols if ele]) # Get rid of empty values
-    output = ""
-    for i in data[2:]:
-        #print(i[0])
-        output +=i[0] + "\n"
-    return output
-    #return  str(pselyr) + " + " +str(pseqno)
-
-# 即使在近端仍希望以 https 模式下執行
-context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
-context.load_cert_chain('localhost.crt', 'localhost.key')
-
-# 取 flaskapp.py 中的 uwsgi 變數設定
-uwsgi = False
-if uwsgi:
-    # 表示程式在雲端執行
-    application = app
-else:
-    # 表示在近端執行, 以 python3 wsgi.py 執行
-    app.run(host='127.0.0.1', port=5443, debug=True, ssl_context=context)
-</pre>
-<h4>nginx sites-available/default settings:</h4>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">server {
-    listen 8000;
-    server_name s1.mde.nfu.edu.tw;
-    charset utf-8;
-    
-    listen 7443 ssl;
- 
-    location /static {
-        alias /home/kmol2019/course_studlist/static/;
-    }
- 
-    location / {
-        include uwsgi_params;
-        uwsgi_pass  127.0.0.1:8087;
-    }
-    
-    ssl_certificate /etc/stunnel/localhost.crt;
-    ssl_certificate_key /etc/stunnel/localhost.key;
-    ssl_session_timeout 5m;
-    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
-    ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
-    ssl_prefer_server_ciphers on;
-    try_files $uri $uri/ =404;
-}</pre>
-<h4>uwsgi7.ini</h4>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">[uwsgi]
-socket = 127.0.0.1:8087
-uid = kmol2019
-gid = kmol2019
-plugins-dir = /usr/lib/uwsgi/plugins/
-plugin = python3
-master = true
-logto = /var/log/uwsgi/emperor.log
-logfile-chown = kmol2019:kmol2019
-processes = 4
-threads = 2
-chdir = /home/kmol2019/course_studlist
-wsgi-file = /home/kmol2019/course_studlist/get_student.py</pre>
-<h4>/etc/systemd/system/cmsimfly.service</h4>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">[Unit]
-Description=uWSGI to serve CMSimfly
-After=network.target
-
-[Service]
-User=kmol2019
-Group=kmol2019
-WorkingDirectory=/home/kmol2019/uwsgi_ini
-ExecStart=/usr/local/bin/uwsgi --emperor /home/kmol2019/uwsgi_ini
-
-[Install]
-WantedBy=multi-user.target</pre>
-<h2>1a</h2>
-<p>wcmg1 組長: 40823131<br/>40823126<br/>40823123<br/>40823124<br/>40823128</p>
-<p>wcmg2 組長: 40823112<br/>40823108<br/>40823109<br/>40823111<br/>40823145</p>
-<p>wcmg3 組長: 40823125<br/>40823129<br/>40823137<br/>40823136<br/>40823151</p>
-<p>wcmg4 組長: 40823110<br/>40823103<br/>40823107<br/>40823130<br/>40823142</p>
-<p><span>wcmg5 組長: 40823143</span><br/>40823144<br/> 40543118<br/>40823127<br/><br/></p>
-<p>HW: 已知選課名單: <a href="http://s1.mde.nfu.edu.tw:8000/?semester=1082&amp;courseno=0744">http://s1.mde.nfu.edu.tw:8000/?semester=1082&amp;courseno=0744</a></p>
-<p>請找出第五組的其他組員學號!!</p><h1>Topics</h1>
-<p>Portable programming system: <a href="https://github.com/mdecourse/wcm2020/tree/master/downloads/portable">https://github.com/mdecourse/wcm2020/tree/master/downloads/portable</a></p>
-<h4>WCM</h4>
-<p style="padding-left: 30px;">Login to your gm email account and download <a href="https://drive.google.com/file/d/1gLb9_6FEv58wVX2uShG_3sgUseFEcH_y/view?usp=sharing">2020wcm_topic_1.pdf</a>.</p>
-<p style="padding-left: 60px;">What is a content management system?</p>
-<p style="padding-left: 60px;">Analyzing your information life cycle.</p>
-<p style="padding-left: 60px;">Overview of enterprise content management.</p>
-<h4><span>Git</span></h4>
-<p style="padding-left: 30px;"><span>Login to your gm email account and download <a href="https://drive.google.com/file/d/1YkLWsDVRlScSuSBQv2Aa1JSjvbydJli-/view?usp=sharing">IntroductionToVersionControlAndGit.pdf</a>.</span></p>
-<p style="padding-left: 60px;"><span>What is version control?</span></p>
-<p style="padding-left: 60px;"><span>Git installation and setup.</span></p>
-<p style="padding-left: 60px;"><span>Git getting started.</span></p>
-<p style="padding-left: 60px;"><span>Commits and remote git.</span></p>
-<h4><span>Github</span></h4>
-<p style="padding-left: 30px;"><span>Login to your gm email account and download <a href="https://drive.google.com/file/d/1vnkDLW1cg8hKEMUdjDstvWqiS4R1n3IC/view?usp=sharing">GithubPrimer.pdf</a></span></p>
-<p style="padding-left: 30px;"><span>Login to your gm email account and download <a href="https://drive.google.com/file/d/18MiM_d95ustohAqoUfx-gc-2dUE9Av0n/view?usp=sharing">ConflictsGUIToolAdvGit.pdf</a></span></p>
-<h4><span>Python and Flask</span></h4>
-<p style="padding-left: 30px;"><span>Login to your gm email account and download <a href="https://drive.google.com/file/d/17_LCSvwgtnIG8FnpezfUlEdbo3Y6G6CP/view?usp=sharing">2019_ABeginnersGuideToPython3Programming.pdf</a></span></p>
-<p style="padding-left: 30px;"><span>Login to your gm email account and download <a href="https://drive.google.com/file/d/1u3PHIbGWz3r4bct_molJg8FODkS8tf02/view?usp=sharing">2019_BuildingRESTAPIsWithFlask.pdf</a></span></p>
-<p style="padding-left: 30px;"><span><a href="https://github.com/mstamy2/PyPDF2">https://github.com/mstamy2/PyPDF2</a></span></p>
-<h4><span>Dart and Flutter</span></h4>
-<p style="padding-left: 30px;"><span>Login to your gm email account and download<span><span> <a href="https://drive.google.com/file/d/1kN0ggmdO8d3oKqT11MRnPtJaKhC5g22t/view?usp=sharing">2020_ QuickStartGuideToDartProgramming.pdf</a></span></span></span></p>
-<p style="padding-left: 30px;"><span><span><span>Login to your gm email account and download<span><span><span> <a href="https://drive.google.com/file/d/1RyCFxXrh0skRAWafX7nyYFVHuMO68iTS/view?usp=sharing">2019_BeginningAppDevelopmentWithFlutter.pdf</a></span></span></span></span></span></span></p>
-<h2>Online Course</h2>
-<p>Google 因 COVID-19 疫情蔓延, 因此允許教育版的 Ｇ Suite 可以在 2020.9 月前免費使用 Meet 中的線上錄影與 live stream 功能.</p>
-<p>而 Youtube Live 目前可以免費從 OBS 串流連接後直播, Ｍeet 的會議錄影將 mp4 存入發起開會者的 Google Drive, 而 Youtube live stream 則將影片存入使用者 channel 中的直播影片區.</p>
-<h4>Google Handout Meet</h4>
-<p style="padding-left: 30px;"><a href="https://meet.google.com">https://meet.google.com</a> </p>
-<h4><a href="https://support.google.com/youtube/answer/2474026?hl=en">Youtube Streaming</a> + <a href="https://portableapps.com/apps/music_video/obs-studio-portable">Portable OBS</a></h4>
-<h4>現場直播的 audio 錄音設定</h4>
-<p>在電腦輔助設計室進行直播時, 由於現場有擴音設備, 因此採用 OBS 串流至 Youtube 的最佳收音並非從 Webcam 的麥克風, 而是從擴音器以 audio output 連接到電腦的麥克風插槽, 然後將 OBS 的 audio 設定為從電腦的麥克風收音.</p>
-<h4>W6</h4>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/bt0e_6hFr9w" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/Fl_QQnKHu50" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/KbjR9PEHq5k" width="560"></iframe></p>
-<h4>W7</h4>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/-uO4voHm0xM" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/vC5jptFUmpI" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/7axdQYkRDHY" width="560"></iframe></p>
-<h4>W8</h4>
-<p><a href="https://drive.google.com/open?id=1wYudC9_GmYNGPKOZdjFPOjf4-wRjbnTD">wcm w8 第一段錄影</a></p>
-<p><a href="https://drive.google.com/open?id=1g7aZExbXcNQndsqszeXG2wHflhPWrspk">wcm w8 第二段錄影</a></p>
-<p><a href="https://drive.google.com/open?id=1uwFqkY_LJs2HdhVDOJyyIKc-3QdseJuu">wcm w8 第三段錄影</a></p>
-<p>當使用 git 指令 push 時, Windows 跳出要求使用者登入 github 的帳號與密碼視窗時, 一旦在此視窗輸入帳號與密碼, Windows 會將此帳號密碼登錄在操作系統中. 為了達到使用可攜的目錄, 可以利用下列指令:</p>
-<p style="padding-left: 30px;">git config --edit --system </p>
-<p>以 vi 編輯器將 credential -&gt; helper 欄位刪除後存檔, 之後 git 便不會再要求 Windows 操作系統代存使用者的相關帳號與密碼.</p>
-<h4><span>Python and Flask</span></h4>
-<p style="padding-left: 30px;"><span>Login to your gm email account and download <a href="https://drive.google.com/file/d/17_LCSvwgtnIG8FnpezfUlEdbo3Y6G6CP/view?usp=sharing">2019_ABeginnersGuideToPython3Programming.pdf</a></span></p>
-<p style="padding-left: 30px;"><span>Login to your gm email account and download <a href="https://drive.google.com/file/d/1u3PHIbGWz3r4bct_molJg8FODkS8tf02/view?usp=sharing">2019_BuildingRESTAPIsWithFlask.pdf</a></span></p>
-<p style="padding-left: 30px;"><span><a href="https://github.com/mstamy2/PyPDF2">https://github.com/mstamy2/PyPDF2</a></span></p>
-<p style="padding-left: 30px;"><span><a href="https://mde.tw/cd2020pj1">https://mde.tw/cd2020pj1</a> </span></p>
-<h4><span>W9</span></h4>
-<p style="padding-left: 30px;"><span><a href="https://www.blog.pythonlibrary.org/2018/06/07/an-intro-to-pypdf2/">https://www.blog.pythonlibrary.org/2018/06/07/an-intro-to-pypdf2/</a> <br/></span></p>
-<p style="padding-left: 30px;"><span><a href="https://github.com/topics/pypdf2">https://github.com/topics/pypdf2</a> <br/></span></p>
-<p style="padding-left: 30px;"><span><a href="https://flask.palletsprojects.com/en/1.1.x/patterns/fileuploads/">https://flask.palletsprojects.com/en/1.1.x/patterns/fileuploads/</a> <br/></span></p>
-<p style="padding-left: 30px;"><span><a href="https://www.google.com/search?q=flask+sqlite">Flask 與 SQLite</a></span></p>
-<p><span>目標 : 建立一個網際 PDF 檔案編修服務系統</span></p><h2>MDETools</h2>
-<p>這裡提供機械設計工程課程相關的工具下載與安裝步驟說明.</p>
-<p><a href="https://drive.google.com/open?id=1KPpXzumzBIvMCovZdBYh0s468uFO277k">SolidWorks 2017 DVD </a>下載 (請登入 ＠gm 帳號後下載)</p>
-<p><a href="https://drive.google.com/open?id=1fEZtGVCXp2vtILUZZ8vTTdtYHsbBpf7j">NX12.02 DVD</a> 下載 (請登入 @gm 帳號後下載)</p>
-<p><a href="https://drive.google.com/open?id=1sMTT_sFO_83fPaogdJUQ1v7oM9NaEb_M">COMSOL 5.5 DVD</a> 下載 (請登入 @gm 帳號後下載)</p>
-<p><a href="https://drive.google.com/open?id=143jFMheM1xjLxhLkSAouThLzj3WUYX6_">Ubuntu 20.04 Virtualbox</a> 下載, 可用於 CMSiMDE, Oauth2 and CoppeliaSim RemoteAPI 開發 (請登入 @gm 帳號後下載)</p>
-<p>安裝步驟請根據上課說明進行.</p><h2>Python</h2>
+            </div>
+          </div>
+          
+        </header>
+    <div id="tipue_search_content">MDETools << <a href='MDETools.html'>Previous</a> <a href='Virtualbox.html'>Next</a> >> Virtualbox<br /><h1>Python</h1>
 <p>課程評分程式</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">'''
 根據評分表單中的 自評分數, 互評得分, 教師評分, 計算學員課程成績
@@ -412,36 +192,36 @@ print(學員成績(80, 70, 60))
 print(學員成績(60, 70, 80))</pre>
 <p></p>
 <h4>Python 語法</h4>
-<script src="/static/brython.js"></script>
-<script src="/static/brython_stdlib.js"></script>
+<script src="./../cmsimde/static/brython.js"></script>
+<script src="./../cmsimde/static/brython_stdlib.js"></script>
 <!-- for ggame -->
-<script src="/static/jquery-3.3.1.min.js"></script>
-<script src="/static/jquery-ui.1.12.1.min.js"></script>
-<script src="/static/pixi-3.0.5.min.js"></script>
-<script src="/static/buzz-1.2.1.js"></script>
-<script src="/static/bs.js"></script>
+<script src="./../cmsimde/static/jquery-3.3.1.min.js"></script>
+<script src="./../cmsimde/static/jquery-ui.1.12.1.min.js"></script>
+<script src="./../cmsimde/static/pixi-3.0.5.min.js"></script>
+<script src="./../cmsimde/static/buzz-1.2.1.js"></script>
+<script src="./../cmsimde/static/bs.js"></script>
 <!-- Cango 程式庫 -->
-<script src="/static/Cango-13v08-min.js"></script>
-<script src="/static/CangoAxes-4v01-min.js"></script>
-<script src="/static/gearUtils-05.js"></script>
+<script src="./../cmsimde/static/Cango-13v08-min.js"></script>
+<script src="./../cmsimde/static/CangoAxes-4v01-min.js"></script>
+<script src="./../cmsimde/static/gearUtils-05.js"></script>
 <!-- for Konva 程式庫 -->
-<script src="/static/konva.min.js"></script>
+<script src="./../cmsimde/static/konva.min.js"></script>
 <script>
 window.onload=function(){
-brython({debug:1, pythonpath:['/static/']});
+brython({debug:1, pythonpath:['./../cmsimde/static/']});
 }
 </script>
 <p><!-- 導入 FileSaver 與 filereader --></p>
 <p>
-<script src="/static/ace/FileSaver.min.js" type="text/javascript"></script>
-<script src="/static/ace/filereader.js" type="text/javascript"></script>
+<script src="./../cmsimde/static/ace/FileSaver.min.js" type="text/javascript"></script>
+<script src="./../cmsimde/static/ace/filereader.js" type="text/javascript"></script>
 </p>
 <p><!-- 導入 ace --></p>
 <p>
-<script src="/static/ace/ace.js" type="text/javascript"></script>
-<script src="/static/ace/ext-language_tools.js" type="text/javascript"></script>
-<script src="/static/ace/mode-python3.js" type="text/javascript"></script>
-<script src="/static/ace/snippets/python.js" type="text/javascript"></script>
+<script src="./../cmsimde/static/ace/ace.js" type="text/javascript"></script>
+<script src="./../cmsimde/static/ace/ext-language_tools.js" type="text/javascript"></script>
+<script src="./../cmsimde/static/ace/mode-python3.js" type="text/javascript"></script>
+<script src="./../cmsimde/static/ace/snippets/python.js" type="text/javascript"></script>
 </p>
 <p><!-- 請注意, 這裡使用 Javascript 將 localStorage["py_src"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
 <p>
@@ -2022,260 +1802,48 @@ doc["ball"].bind('click', Ball.prog)
 <!-- ball ends -->
 <p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="clear">Clear</button></p>
 <h4>參考資料:</h4>
-<p><a href="/downloads/turtle_intro.pdf">turtle_intro.pdf</a></p>
-<p><a href="/downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p>
-<h2>Virtualbox</h2>
-<p>更改 win10_64_comsol5.5.vmdk 的 UUID</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">"c:\Program Files\Oracle\VirtualBox\VBoxManage.exe" internalcommands sethduuid win10_64_comsol5.5.vmdk</pre>
-<p><br/><br/></p><h2>Ubuntu</h2>
-<p>以下為建立 Ubuntu 20.04 虛擬主機, 用於網際內容管理, 電腦輔助設計實習與協同產品設計實習課程, 作爲區域網路或廣域網路伺服器主機課程練習之用.</p>
-<p>由於每一台 Virtualbox 最多可以設定支援 36 片網路卡, 而且設定檔案可以透過程式方法控制各種設定, 因此適合用於上述課程中相關網際應用程式的部署使用, 也可以作為之後將網際程式配置到實體主機, 雲端主機或分散式版次管理系統 CI/CD 配置模擬.</p>
-<p style="padding-left: 30px;">請登入 ＠gm 帳號後下載 <a href="https://drive.google.com/open?id=1lnMvowqRTWVgfaMClj2skGjURi148n71">Ubuntu20.04_cd2020pj1.vdi</a> (11 GB, 用於 CMSiMDE, CoppeliaSim, Pyslvs, Range3, NGSolve, Jupyter 網際程式開發)</p>
-<p>因為在 Virtualbox 中的每一個虛擬硬碟檔案, 都必須要有獨立的 UUID, 因此若複製虛擬硬碟檔案, 而且要在同一電腦上使用, 可以使用下列指令變更 UUID:</p>
-<p style="padding-left: 30px;">"c:\Program Files\Oracle\VirtualBox\VBoxManage.exe" internalcommands sethduuid registered_vdi.vdi</p>
-<h4>Ubuntu Server (3GB)</h4>
-<p>登入 @gm 帳號後, 下載 <a href="https://drive.google.com/open?id=1bUVxVBnMf1mxijl-iP-Sj19n8ASzqOF3">ubuntu-20.04-live-server-amd64.iso</a></p>
-<p>或從 <a href="https://ubuntu.com/download/server">https://ubuntu.com/download/server</a> 下載 Ubuntu Server 20.04 iso 檔案, 利用 <a href="https://www.virtualbox.org/">Virtualbox</a> 建立成虛擬主機檔案.</p>
-<h4>安裝 Graphical Environment (1GB)</h4>
-<p style="padding-left: 30px;">sudo apt install xorg</p>
-<h4>安裝 LXDE Window Manager (800 MB)</h4>
-<p style="padding-left: 30px;">sudo apt install lxde</p>
-<h4> 安裝 CMSiMDE 所需的 modules</h4>
-<p style="padding-left: 30px;">sudo pip3 install flask flask_cors lxml bs4 markdown pelican leo</p>
-<h4>安裝開發 Oauth2 所需模組</h4>
-<p style="padding-left: 30px;">sudo pip3 install authomatic github3.py</p>
-<h4>安裝 CoppeliaSim</h4>
-<p style="padding-left: 30px;">從 <a href="https://www.coppeliarobotics.com/ubuntuVersions">https://www.coppeliarobotics.com/ubuntuVersions</a>  下載 edu Linux 版本, 解開壓縮檔案後, 透過 coppelia.sh 執行.</p>
-<p style="padding-left: 30px;">為了能直接在 Terminal 執行 CoppeliaSim 目錄中的 coppelia.sh, 可以編輯 /etc/profile</p>
-<p style="padding-left: 30px;">加入 CoppeliaSim 所在目錄:</p>
-<p style="padding-left: 30px;">export PATH=/home/kmol2020/coppeliasim4:PATH</p>
-<p style="padding-left: 30px;">然後以 source /etc/profile 讓命令搜尋路徑設定生效.</p>
-<h4>安裝 numpy, opencv-python 與 imutils 等 Python 3 模組, 用於影像辨識程式開發</h4>
-<p style="padding-left: 30px;">sudo pip3 install numpy opencv-python imutils</p>
-<h4>編譯 Pyslvs-UI</h4>
-<p style="padding-left: 30px;">git clone --recurse-submodule <a href="https://github.com/kmolyuan/solvespace.git">https://github.com/kmolyuan/solvespace.git</a></p>
-<p style="padding-left: 30px;">cd solvespace/cython</p>
-<p style="padding-left: 30px;">sudo pip3 install -r requirements.txt</p>
-<p style="padding-left: 30px;">sudo python3 setup.py install</p>
-<p style="padding-left: 30px;">git clone --recurse-submodule <a href="https://github.com/kmolyuan/pyslvs-ui.git">https://github.com/kmolyuan/pyslvs-ui.git</a></p>
-<p style="padding-left: 30px;">cd pyslvs-ui</p>
-<p style="padding-left: 30px;">sudo pip3 install -r requirements.txt</p>
-<p style="padding-left: 30px;">sudo python3 setup.py install</p>
-<p style="padding-left: 30px;">完成後以 pyslvs 開啟.</p>
-<h4>編譯 Range3</h4>
-<p style="padding-left: 30px;">git clone <a href="https://github.com/Range-Software/range3.git">https://github.com/Range-Software/range3.git</a></p>
-<p style="padding-left: 30px;">cd range3</p>
-<p style="padding-left: 30px;">sudo ./scripts/prereqs_debian.sh</p>
-<p style="padding-left: 30px;">./scripts/build.sh --clean &amp;&amp; ./scripts/create_package.sh</p>
-<p style="padding-left: 30px;">執行</p>
-<p style="padding-left: 30px;">cd build-Release/Range/</p>
-<p style="padding-left: 30px;">./Range</p>
-<p>修改所有用戶的指令搜尋路徑</p>
-<p style="padding-left: 30px;">編輯 /etc/profile</p>
-<p style="padding-left: 30px;">加入</p>
-<p style="padding-left: 30px;">export PATH=/home/kmol2020/tmp/range3/build-Release/Range:PATH</p>
-<p style="padding-left: 30px;">之後</p>
-<p style="padding-left: 30px;">source /etc/profile</p>
-<p style="padding-left: 30px;">接下來只要輸入 Range 就可以開啟 Range3</p>
-<h4>安裝 NGSolve</h4>
-<p style="padding-left: 30px;">sudo apt-add-repository universe<br/><br/>sudo add-apt-repository ppa:ngsolve/ngsolve</p>
-<p style="padding-left: 30px;">sudo apt-get update<br/><br/>sudo apt-get install ngsolve</p><h3>Netplan</h3>
-<p>若在 Windows 10 中啟動 Virtualbox Ubuntu 20.04 則可將網路設為 Host Only, 不使用 DHCP, 而進入 Ubuntu 之後, 以 netplan 手動設定在 Windows 10 可以連線的區域網路.</p>
-<p>例如: Windows Gateway 設為 192.168.56.1, 而 Host Only 虛擬主機設為 192.168.56.2</p>
-<p>/etc/netplan/00-installer-config.yaml</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    enp3s0:
-      dhcp6: true
-      addresses:
-        - 10.10.10.2/24
-      gateway4: 10.10.10.1
-      nameservers:
-          search: [mydomain, otherdomain]
-          addresses: [10.10.10.1, 1.1.1.1]</pre>
-<p></p><h1>Dartpad</h1>
-<p>Notice: the <a href="https://developer.github.com/apps/building-github-apps/understanding-rate-limits-for-github-apps/">rate limits of Github Apps</a></p>
-<p style="padding-left: 30px;"><a href="https://developer.github.com/v3/rate_limit/">Github rate limits</a></p>
-<p style="padding-left: 30px;"><a href="https://docs.gitlab.com/ee/security/rate_limits.html">Gitlab rate limits setup</a></p>
-<!-- 透過 getDart(dirname) 取位於 downloads/dart_ex/ 目錄中 dirname 目錄中的 Dart 程式碼 -->
-<script>
-function getDart(dirname){
-    source = "https://mde.tw/wcm2020/downloads/dartpad/embed-dart.html?gh_owner=mdecourse&gh_repo=wcm2020&gh_path=downloads/dart_ex/" + dirname + "&theme=dark";
-    document.getElementById("iframe").src = source ;
-}
-
-function getHtmlDart(dirname){
-    source = "https://mde.tw/wcm2020/downloads/dartpad/embed-html.html?gh_owner=mdecourse&gh_repo=wcm2020&gh_path=downloads/dart_ex/" + dirname + "&theme=dark";
-document.getElementById("iframe").src = source ;
-}
-
-function getFlutter(dirname){
-    source = "https://mde.tw/wcm2020/downloads/dartpad/embed-flutter.html?gh_owner=mdecourse&gh_repo=wcm2020&gh_path=downloads/dart_ex/" + dirname + "&theme=dark";
-document.getElementById("iframe").src = source ;
-}
-
-function largest(){
-document.getElementById("iframe").width = document.body.clientWidth ;
-document.getElementById("iframe").height = document.body.clientWidth*0.5 ;
-}
-
-function original(){
-document.getElementById("iframe").width = 800 ;
-document.getElementById("iframe").height = 600 ;
-}
-</script>
-<!-- 取 Dart 程式的按鈕 -->
-<p><a href="https://mde.tw/wcm2020/downloads/dartpad/">https://mde.tw/wcm2020/downloads/dartpad/</a> </p>
-<h4>純 Dart 程式</h4>
-<p><button onclick="getDart('hello')">Hello</button> <button onclick="getDart('for')">For Loop</button> <button onclick="getDart('sum')">Sum</button> <button onclick="getDart('runge_kutta')">Runge-Kutta</button> <button onclick="getDart('rk_ex1')">RK ex1</button> <button onclick="getDart('mass_spring_damping')">Mass Spring Damping</button> <button onclick="getDart('function')">Function</button> <button onclick="getDart('fun_parameter')">Function Parameter</button> <button onclick="getDart('fat_arrow')">Fat Arrow</button> <button onclick="getDart('temp1')">Temp 1</button></p>
-<h4>Html 程式</h4>
-<p><button onclick="getHtmlDart('random_grouping')">亂數分組</button> <button onclick="getHtmlDart('roc_flag')">ROC Flag</button> <button onclick="getHtmlDart('rotROC')">rot ROC</button> <button onclick="getHtmlDart('usaflag')">USA Flag</button> <button onclick="getHtmlDart('grid')">Grid</button> <button onclick="getHtmlDart('xyplot')">X-Y Plot</button> <button onclick="getHtmlDart('slithery')">Slithery</button> <button onclick="getHtmlDart('html_tetris')">Tetris</button></p>
-<h4>Flutter 程式</h4>
-<p><button onclick="getFlutter('flutter0')">Flutter0</button> <button onclick="getFlutter('flutter1')">Flutter1</button> <button onclick="getFlutter('flutter2')">Flutter2</button> <button onclick="getFlutter('flutter3')">Flutter3</button> <button onclick="getFlutter('flutter4')">Flutter4</button> <button onclick="getFlutter('flutter_counter')">Flutter Counter</button> <button onclick="getFlutter('flutter_roc')">ROC Flag</button> <button onclick="getFlutter('flutter_mine1')">踩地雷 1</button> <button onclick="getFlutter('flutter_mine2')">踩地雷 2</button> <button onclick="getFlutter('flutter_mine3')">踩地雷 3</button> <button onclick="getFlutter('flutter_mine4')">踩地雷 4</button> <button onclick="getFlutter('flutter_dropdown')">Dropdown</button> <button onclick="getFlutter('flutter_multiselect')">Multiselect</button> <button onclick="getFlutter('flutter_search')">Search</button> <button onclick="getFlutter('flutter_login')">Login</button> <button onclick="getFlutter('flutter_temp')">溫度轉換</button> <button onclick="getFlutter('flutter_ttt')">Tic-Tac-Toe</button> <button onclick="getFlutter('flutter_calculator')">Calculator</button> <button onclick="getFlutter('flutter_mouse1')">Mouse1</button> <button onclick="getFlutter('flutter_paint1')">Paint1</button></p>
-<!-- 內建放入的 Dart 原始碼 -->
-<p><button onclick="largest()">放大</button> <button onclick="original()">回復</button></p>
-<p><iframe height="600" id="iframe" src="https://mde.tw/wcm2020/downloads/dartpad/embed-dart.html?gh_owner=mdecourse&amp;gh_repo=wcm2020&amp;gh_path=downloads/dart_ex/mass_spring_damping&amp;theme=dark" width="800"></iframe></p><h1>Project</h1>
-<p>Build an online pdf file manipulation system.</p>
-<p style="padding-left: 30px;">pdf file upload</p>
-<p style="padding-left: 30px;">pdf file split</p>
-<p style="padding-left: 30px;">pdf file merge</p>
-<p>Build an online content management system.</p>
-<p style="padding-left: 30px;">markdown editor</p>
-<p style="padding-left: 30px;">markdown to LaTeX</p>
-<p style="padding-left: 30px;">LaTeX to pdf</p>
-<h4>References</h4>
-<h4>Pypdf2 examples:</h4>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pypdf2_ex1.py
-import os
-from PyPDF2 import PdfFileWriter, PdfFileReader
-
-pdfReader = PdfFileReader(open("2002_Book_Real-WorldASPNETBuildingAConte.pdf", "rb"))
-information = [("WhatIsCMS",18,45)]
-
-for page in range(len(information)):
-    pdf_writer = PdfFileWriter()
-    start = information[page][1]
-    end = information[page][2]
-    while start&lt;=end:
-        pdf_writer.addPage(pdfReader.getPage(start-1))
-        start+=1
-    if not os.path.exists("./"):
-        os.makedirs(savepath)
-    output_filename = '{}_{}_page_{}.pdf'.format(information[page][0],information[page][1], information[page][2])
-    with open(output_filename,'wb') as out:
-        pdf_writer.write(out)
-</pre>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pypdf2_ex2.py
-import os
-from PyPDF2 import PdfFileWriter, PdfFileReader
-
-pdfReader = PdfFileReader(open("Beginning-Git-and-GitHub.pdf", "rb"))
-information = [("GitAndGithub",17,105),("GitAndGithub",107,194),("GitAndGithub",196,289)]
-
-for page in range(len(information)):
-    pdf_writer = PdfFileWriter()
-    start = information[page][1]
-    end = information[page][2]
-    while start&lt;=end:
-        pdf_writer.addPage(pdfReader.getPage(start-1))
-        start+=1
-    if not os.path.exists("./"):
-        os.makedirs(savepath)
-    output_filename = '{}_{}_page_{}.pdf'.format(information[page][0],information[page][1], information[page][2])
-    with open(output_filename,'wb') as out:
-        pdf_writer.write(out)
-</pre>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pypdf2_ex3.py
-# merge several pdf files
-import sys
-import PyPDF2
-
-pdf_write_object = PyPDF2.PdfFileWriter()
-
-#for i in sys.argv[1:]:
-for i in ["WhatIsCMS.pdf","InforLifeCycle.pdf","EnterpriseContentManage.pdf"]:
-    pdf_read_object = PyPDF2.PdfFileReader(i)
-    print('processing file : '+ i + 'number of pages : ' +  str(pdf_read_object.numPages))
-    for page in range(pdf_read_object.numPages):
-        pdf_write_object.addPage(pdf_read_object.getPage(page))
-
-final_file_object = open('2020CMS.pdf', 'wb')
-pdf_write_object.write(final_file_object)
-final_file_object.close()
-</pre>
-<h4>Python:</h4>
-<p>Learn to Program with Python 3</p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-3879-0">https://link.springer.com/book/10.1007/978-1-4842-3879-0</a></p>
-<p><a href="https://github.com/mstamy2/PyPDF2">https://github.com/mstamy2/PyPDF2</a></p>
-<p>Building REST APIs with Flask</p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-5022-8">https://link.springer.com/book/10.1007/978-1-4842-5022-8</a></p>
-<p>The Definitive Guide to SQLite</p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-3226-1">https://link.springer.com/book/10.1007/978-1-4302-3226-1</a></p>
-<hr/>
-<h4>Dart:</h4>
-<p>Quick Start Guide to Dart Programming</p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-5562-9">https://link.springer.com/book/10.1007/978-1-4842-5562-9</a></p>
-<p>Practical Flutter</p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-4972-7">https://link.springer.com/book/10.1007/978-1-4842-4972-7</a></p>
-<p>Beginning App Development with Flutter</p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-5181-2">https://link.springer.com/book/10.1007/978-1-4842-5181-2</a></p>
-<p>Backend Framework in Dart:</p>
-<p style="padding-left: 30px;"><a href="https://angel-dart.dev/">https://angel-dart.dev/</a></p>
-<hr/>
-<h4>LaTeX, Markdown and Pandoc</h4>
-<p>Login to your gm email account and download</p>
-<p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1V4Zkg1B3nVyEZxkCMiS8-okTZ3JEp0zT/view?usp=sharing">2017_LaTeXIn24Hours.pdf</a></p>
-<p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1QY0ljZGzWMHCkxn5LA_GCd04C8otF1RF/view?usp=sharing">2014_PracticalLaTeX.pdf</a></p>
-<p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1Uj0JsOqKLcPtpwXXnDsV0V3gdalquqsp/view?usp=sharing">2016_MoreMathIntoLaTeX.pdf</a></p>
-<p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/13qrqKKznk2E62q076HLxmaC4FRKlV-LQ/view?usp=sharing">2019_IntroducingMarkdownAndPandoc.pdf</a></p>
-<p><a href="https://pandoc.org/">https://pandoc.org/</a></p>
-<p><a href="https://yihui.org/tinytex/">https://yihui.org/tinytex/</a></p><h2>Tools</h2>
-<p>W1: <a href="https://github.com/mdecourse/wcm2020/blob/master/downloads/portable/wcm2020_w1.zip">https://github.com/mdecourse/wcm2020/blob/master/downloads/portable/wcm2020_w1.zip</a> 19MB</p>
-<p><a href="https://drive.google.com/open?id=1SvMKQFViJ0mskt20UhSqkjzckB3noSJH">wcm2020_w2.7z</a> 325 MB  (登入 gm 後下載)</p>
-<p><a href="https://drive.google.com/open?id=1mULnC9CYkd-BYMDwmOf-asvuM4tQ3yGT">msys64_201905_clean.7z</a> 66MB <span>(登入 gm 後下載)</span></p>
-<p><a href="https://drive.google.com/open?id=1uSYmnzalk1lFG0yxZgTavWENVd37yndK">wcm2020_w3.7z</a> 948 MB<span> </span><span>(登入 gm 後下載)</span> </p><h2>Python as backend</h2>
-<p>Web based PDF file manipulation system</p>
-<p style="padding-left: 30px;">A Beginners Guide to Python 3 Programming</p>
-<p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-3-030-20290-3">https://link.springer.com/book/10.1007/978-3-030-20290-3</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/mstamy2/PyPDF2">https://github.com/mstamy2/PyPDF2</a></p>
-<p style="padding-left: 30px;">Building REST APIs with Flask</p>
-<p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-5022-8">https://link.springer.com/book/10.1007/978-1-4842-5022-8</a></p>
-<p>CMSiMDE (integrated with Pelican blog and Reveal.js)</p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a></p>
-<p>Temp Conversion (Dart as frontend)</p>
-<p style="padding-left: 30px;"><a href="http://mde.tw/cp2019/content/Temp%20Conv.html">http://mde.tw/cp2019/content/Temp%20Conv.html</a></p>
-<p>Pygrouf (linked with SQLite, MySQL and PostgreSQL)</p>
-<p style="padding-left: 30px;"><a href="https://github.com/chiamingyen/pygrouf">https://github.com/chiamingyen/pygrouf</a></p>
-<p>CP to CAD (deployment with <a href="https://www.heroku.com/">https://www.heroku.com/</a>)</p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/wcms-scrum1">https://github.com/mdecourse/wcms-scrum1</a></p>
-<p>Web-based Laboratory 2020</p>
-<p style="padding-left: 30px;">based on <a href="https://link.springer.com/book/10.1007/b138627">Creating Web-based Laboratories</a> (2004 with Matlab and Simulink)</p><h2>Dart as backend</h2>
-<h4>Dart-Angel</h4>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/UzuecP3utk8" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/iPbM10mvpko" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/jM9-JtIbokQ" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/dMIdLiwksUE" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/3T4iYYgpCJw" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/ggmjumYogEo" width="560"></iframe></p>
-<h4>Aquenduct</h4>
-<p><a href="https://aqueduct.io/">https://aqueduct.io/</a></p>
-<h2>Threejs</h2>
-<p>Essential TypeScript</p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-4979-6">https://link.springer.com/book/10.1007/978-1-4842-4979-6</a></p>
-<p><a href="https://github.com/threeDart/three.dart">https://github.com/threeDart/three.dart</a></p>
-<p style="padding-left: 30px;"><a href="http://threedart.github.io/three.dart/">http://threedart.github.io/three.dart/</a></p>
-<p><a href="https://github.com/block-forest/threejs-dart-facade">https://github.com/block-forest/threejs-dart-facade</a></p>
-<h2>WebVR</h2>
-<p>Learning Web-based Virtual Reality</p>
-<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-2710-7">https://link.springer.com/book/10.1007/978-1-4842-2710-7</a></p>
-<p style="padding-left: 30px;"><a href="https://glitch.com/~fancy-python">https://glitch.com/~fancy-python</a></p>
-<p style="padding-left: 60px;"><a href="https://aframe.io/">https://aframe.io/</a></p>
-<p><a href="https://www.roadtovr.com/4-steps-to-start-experimenting-with-webvr-in-10-minutes/">https://www.roadtovr.com/4-steps-to-start-experimenting-with-webvr-in-10-minutes/</a></p>
-<p style="padding-left: 30px;"><a href="http://borismus.github.io/webvr-boilerplate/">http://borismus.github.io/webvr-boilerplate/</a></p>
-<p><a href="https://skywell.software/blog/what-is-webvr-and-how-to-use-it/">https://skywell.software/blog/what-is-webvr-and-how-to-use-it/</a></p>
-<h4>Flutter and AR</h4>
-<p style="padding-left: 30px;"><a href="https://medium.com/flutterpub/flutter-and-ar-a65bb202c5d8">https://medium.com/flutterpub/flutter-and-ar-a65bb202c5d8</a></p>
-<p style="padding-left: 30px;"><a href="https://flatteredwithflutter.com/how-to-create-ar-in-flutter/">https://flatteredwithflutter.com/how-to-create-ar-in-flutter/</a></p>
-<p style="padding-left: 30px;"><a href="https://pub.dev/packages/arcore_flutter_plugin">https://pub.dev/packages/arcore_flutter_plugin</a></p>
+<p><a href="./../downloads/turtle_intro.pdf">turtle_intro.pdf</a></p>
+<p><a href="./../downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p>
+<br />MDETools << <a href='MDETools.html'>Previous</a> <a href='Virtualbox.html'>Next</a> >> Virtualbox</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cmsimde/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cmsimde/static/chimper/js/popper.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cmsimde/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cmsimde/static/chimper/js/main.js"></script>
+        </body></html>
+        
