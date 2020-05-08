@@ -143,7 +143,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li class='has-children'><a href='Grouping.html'>Grouping</a><ul class='dropdown'><li><a href='1a.html'>1a</a></li></ul><li class='has-children'><a href='Topics.html'>Topics</a><ul class='dropdown'><li><a href='Online Course.html'>Online Course</a><li><a href='MDETools.html'>MDETools</a><li><a href='Python.html'>Python</a><li><a href='Virtualbox.html'>Virtualbox</a><li class='has-children'><a href='Ubuntu.html'>Ubuntu</a><ul class='dropdown'><li><a href='Netplan.html'>Netplan</a></li></li></ul></ul><li><a href='Dartpad.html'>Dartpad</a><li class='has-children'><a href='Project.html'>Project</a><ul class='dropdown'><li><a href='Tools.html'>Tools</a><li><a href='Python as backend.html'>Python as backend</a><li><a href='Dart as backend.html'>Dart as backend</a><li><a href='Threejs.html'>Threejs</a><li><a href='WebVR.html'>WebVR</a></li>
+                     <li><a href='About.html'>About</a><li class='has-children'><a href='Grouping.html'>Grouping</a><ul class='dropdown'><li><a href='1a.html'>1a</a></li></ul><li class='has-children'><a href='Topics.html'>Topics</a><ul class='dropdown'><li><a href='Online Course.html'>Online Course</a><li><a href='MDETools.html'>MDETools</a><li><a href='Python.html'>Python</a><li><a href='Virtualbox.html'>Virtualbox</a><li class='has-children'><a href='Ubuntu.html'>Ubuntu</a><ul class='dropdown'><li><a href='Netplan.html'>Netplan</a></li></li></ul></ul><li><a href='Dartpad.html'>Dartpad</a><li class='has-children'><a href='Project.html'>Project</a><ul class='dropdown'><li><a href='Tools.html'>Tools</a><li><a href='Python as backend.html'>Python as backend</a><li><a href='Dart as backend.html'>Dart as backend</a><li><a href='Threejs.html'>Threejs</a><li><a href='CNC.html'>CNC</a><li><a href='WebVR.html'>WebVR</a></li>
                       </ul>
                 </nav>
               </div>
@@ -176,7 +176,158 @@ img.add_border {
 <p style="padding-left: 30px;"><a href="https://drive.google.com/open?id=1uwFqkY_LJs2HdhVDOJyyIKc-3QdseJuu">wcm w8 第三段錄影</a></p>
 <h4>W9</h4>
 <p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1UFvoiCHVGLdyc8t4yvsaHF1PaU0evipH/view?usp=sharing">wcm w9 直播錄影</a></p>
+<h4>W10</h4>
+<p style="padding-left: 30px;">說明如何利用 Python 程式讀取學員修課檔案, 以及從 Google Sheet 轉出的 .csv, 分別處理為 List 與 Dictionary 資料格式之後, 逐一根據學員 List 學號, 從 Dictionary 取出自評成績.</p>
+<p style="padding-left: 60px;"><a href="https://drive.google.com/file/d/1JtzoMv7_k307l2ZXgJExKU7z5cwvnGPu/view?usp=sharing">wcm w10-1</a></p>
+<p style="padding-left: 60px;"><a href="https://drive.google.com/file/d/1Djm5Vmmw_QcIVx9RWCuy4eCGGaWW3zHi/view?usp=sharing">wcm w10-2</a></p>
+<p style="padding-left: 60px;"><a href="https://drive.google.com/file/d/1ZeA4goQj55QT8igdd7_J6kOqZTTGXzW_/view?usp=sharing">wcm w10-3</a></p>
+<p style="padding-left: 60px;">參考程式:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import csv
+
+# read student list
+
+filename = 'E:/wcm2020/data/tmp/2020_spring_score/2a/2a_list.txt'
+with open(filename, encoding="utf-8") as f:
+    content = f.readlines()
+#print(content)
+student = [x.strip() for x in content] 
+#print(student)
+
+
+# Timestamp, email, 修課名稱, url, score, desp, memo
+# 0, 1, 2, 3, 4, 5, 6
+#total = 0
+all = {}
+with open('y:/2020midterm.csv', encoding="utf-8") as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
+    #print(csv_reader)
+
+    line_count = 0
+    for row in csv_reader:
+        if line_count == 0:
+            #print(f'Column names are {", ".join(row)}')
+            line_count += 1
+        else:
+            student_num = row[1].split("@")[0]
+            #print(student_num)
+            student_score = row[4]
+            #print(student_score)
+            try:
+                all.update({student_num: student_score})
+            except:
+                all.update({student_num: "error"})
+            #print(f'\t{row[0]} works in the {row[1]} department, and was born in {row[2]}.')
+            #print(f'\t{row[4]}')
+            #total += int(row[4])
+            line_count += 1
+#print(all)
+#print(student)
+
+
+for i in student:
+    
+    #if i in all:
+        #pass
+    #else:
+        #print(str(i))
+    
+    try:
+        print(i + "\t" + all[i])
+    except:
+        print(i + "\t60")
+
+    #print(f'Processed {line_count} lines.')
+    #print("平均=" + str(total/line_count))
+</pre>
 <hr/>
+<p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1-rUis6vnks-IaKvsKJqPjqfr4rRIX8S9/view?usp=sharing">wcm_w10-4</a></p>
+<h4 style="padding-left: 30px;">flask 程式一:</h4>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask
+ 
+app = Flask(__name__)
+ 
+@app.route('/') 
+def hello_world():
+    return 'Hello, From Flask!'
+ 
+if __name__== '__main__': 
+    app.run()</pre>
+<p style="padding-left: 30px;">Flask 程式二:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask, render_template
+import ssl
+import csv
+ 
+context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+context.load_cert_chain('localhost.crt', 'localhost.key')
+ 
+app = Flask(__name__)
+ 
+@app.route('/') 
+def hello_world():
+    return 'Hello, From Flask!'
+ 
+@app.route('/ROCflag')
+def drawROC():
+    return render_template("ROCflag.html")
+
+@app.route("/midterm")
+def midterm():
+    # read student list
+
+    filename = '1a_list.txt'
+    with open(filename, encoding="utf-8") as f:
+        content = f.readlines()
+    #print(content)
+    student = [x.strip() for x in content] 
+    #print(student)
+
+
+    # Timestamp, email, 修課名稱, url, score, desp, memo
+    # 0, 1, 2, 3, 4, 5, 6
+    #total = 0
+    all = {}
+    with open('2020midterm.csv', encoding="utf-8") as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        #print(csv_reader)
+
+        line_count = 0
+        for row in csv_reader:
+            if line_count == 0:
+                #print(f'Column names are {", ".join(row)}')
+                line_count += 1
+            else:
+                student_num = row[1].split("@")[0]
+                #print(student_num)
+                student_score = row[3]
+                #print(student_score)
+                try:
+                    all.update({student_num: student_score})
+                except:
+                    all.update({student_num: "error"})
+                #print(f'\t{row[0]} works in the {row[1]} department, and was born in {row[2]}.')
+                #print(f'\t{row[4]}')
+                #total += int(row[4])
+                line_count += 1
+    #print(all)
+    #print(student)
+
+    output = ""
+    for i in student:
+        
+        #if i in all:
+            #pass
+        #else:
+            #print(str(i))
+        
+        try:
+            output += (str(i) + ": &lt;a href='" + str(all[i]) + "'&gt;"+ str(all[i]) + "&lt;/a&gt;&lt;br /&gt;")
+        except:
+            output += (str(i) + ": no data&lt;br/&gt;")
+        
+    return output
+     
+if __name__== '__main__': 
+    app.run(ssl_context=context)</pre>
 <p>當使用 git 指令 push 時, Windows 跳出要求使用者登入 github 的帳號與密碼視窗時, 一旦在此視窗輸入帳號與密碼, Windows 會將此帳號密碼登錄在操作系統中. 為了達到使用可攜的目錄, 可以利用下列指令:</p>
 <p style="padding-left: 30px;">git config --edit --system </p>
 <p>以 vi 編輯器將 credential -&gt; helper 欄位刪除後存檔, 之後 git 便不會再要求 Windows 操作系統代存使用者的相關帳號與密碼.</p>
