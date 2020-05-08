@@ -357,6 +357,7 @@ WantedBy=multi-user.target</pre>
 <p style="padding-left: 30px;"><a href="https://drive.google.com/open?id=1uwFqkY_LJs2HdhVDOJyyIKc-3QdseJuu">wcm w8 第三段錄影</a></p>
 <h4>W9</h4>
 <p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1UFvoiCHVGLdyc8t4yvsaHF1PaU0evipH/view?usp=sharing">wcm w9 直播錄影</a></p>
+<hr/>
 <p>當使用 git 指令 push 時, Windows 跳出要求使用者登入 github 的帳號與密碼視窗時, 一旦在此視窗輸入帳號與密碼, Windows 會將此帳號密碼登錄在操作系統中. 為了達到使用可攜的目錄, 可以利用下列指令:</p>
 <p style="padding-left: 30px;">git config --edit --system </p>
 <p>以 vi 編輯器將 credential -&gt; helper 欄位刪除後存檔, 之後 git 便不會再要求 Windows 操作系統代存使用者的相關帳號與密碼.</p>
@@ -2081,7 +2082,13 @@ doc["ball"].bind('click', Ball.prog)
 <p style="padding-left: 30px;">接下來只要輸入 Range 就可以開啟 Range3</p>
 <h4>安裝 NGSolve</h4>
 <p style="padding-left: 30px;">sudo apt-add-repository universe<br/><br/>sudo add-apt-repository ppa:ngsolve/ngsolve</p>
-<p style="padding-left: 30px;">sudo apt-get update<br/><br/>sudo apt-get install ngsolve</p><h3>Netplan</h3>
+<p style="padding-left: 30px;">sudo apt-get update<br/><br/>sudo apt-get install ngsolve</p>
+<h4>xterm 設定</h4>
+<p>.Xresources 檔案</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">xterm*font:     *-fixed-*-*-*-18-*</pre>
+<p>讓 .Xresources 設定生效:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">xrdb ~/.Xresources</pre>
+<p><br/><br/></p><h3>Netplan</h3>
 <p>若在 Windows 10 中啟動 Virtualbox Ubuntu 20.04 則可將網路設為 Host Only, 不使用 DHCP, 而進入 Ubuntu 之後, 以 netplan 手動設定在 Windows 10 可以連線的區域網路.</p>
 <p>例如: Windows Gateway 設為 192.168.56.1, 而 Host Only 虛擬主機設為 192.168.56.2</p>
 <p>/etc/netplan/00-installer-config.yaml</p>
@@ -2264,11 +2271,15 @@ final_file_object.close()
 <h4>Aquenduct</h4>
 <p><a href="https://aqueduct.io/">https://aqueduct.io/</a></p>
 <h2>Threejs</h2>
+<p><a href="https://threejs.org/docs/">https://threejs.org/docs/</a> </p>
 <p>Essential TypeScript</p>
 <p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-4979-6">https://link.springer.com/book/10.1007/978-1-4842-4979-6</a></p>
 <p><a href="https://github.com/threeDart/three.dart">https://github.com/threeDart/three.dart</a></p>
 <p style="padding-left: 30px;"><a href="http://threedart.github.io/three.dart/">http://threedart.github.io/three.dart/</a></p>
 <p><a href="https://github.com/block-forest/threejs-dart-facade">https://github.com/block-forest/threejs-dart-facade</a></p>
+<p><a href="https://pub.dev/packages/webgl_helper">https://pub.dev/packages/webgl_helper</a> </p><h2>CNC</h2>
+<p><a href="https://github.com/grbl/grbl">https://github.com/grbl/grbl</a> </p>
+<p><a href="https://github.com/filipecaixeta/cncwebsim">https://github.com/filipecaixeta/cncwebsim</a> </p>
 <h2>WebVR</h2>
 <p>Learning Web-based Virtual Reality</p>
 <p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-2710-7">https://link.springer.com/book/10.1007/978-1-4842-2710-7</a></p>

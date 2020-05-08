@@ -378,6 +378,7 @@ WantedBy=multi-user.target</pre>
 <p><a href="https://drive.google.com/open?id=1sMTT_sFO_83fPaogdJUQ1v7oM9NaEb_M">COMSOL 5.5 DVD</a> 下載 (請登入 @gm 帳號後下載)</p>
 <p><a href="https://drive.google.com/open?id=143jFMheM1xjLxhLkSAouThLzj3WUYX6_">Ubuntu 20.04 Virtualbox</a> 下載, 可用於 CMSiMDE, Oauth2 and CoppeliaSim RemoteAPI 開發 (請登入 @gm 帳號後下載)</p>
 <p>安裝步驟請根據上課說明進行.</p><h2>Python</h2>
+<p><a href="https://www.learnpython.org/">https://www.learnpython.org/</a> </p>
 <p>課程評分程式</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">'''
 根據評分表單中的 自評分數, 互評得分, 教師評分, 計算學員課程成績
@@ -2026,8 +2027,7 @@ doc["ball"].bind('click', Ball.prog)
 <p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="clear">Clear</button></p>
 <h4>參考資料:</h4>
 <p><a href="/downloads/turtle_intro.pdf">turtle_intro.pdf</a></p>
-<p><a href="/downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p>
-<h2>Virtualbox</h2>
+<p><a href="/downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p><h2>Virtualbox</h2>
 <p>更改 win10_64_comsol5.5.vmdk 的 UUID</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">"c:\Program Files\Oracle\VirtualBox\VBoxManage.exe" internalcommands sethduuid win10_64_comsol5.5.vmdk</pre>
 <p><br/><br/></p><h2>Ubuntu</h2>
@@ -2082,7 +2082,13 @@ doc["ball"].bind('click', Ball.prog)
 <p style="padding-left: 30px;">接下來只要輸入 Range 就可以開啟 Range3</p>
 <h4>安裝 NGSolve</h4>
 <p style="padding-left: 30px;">sudo apt-add-repository universe<br/><br/>sudo add-apt-repository ppa:ngsolve/ngsolve</p>
-<p style="padding-left: 30px;">sudo apt-get update<br/><br/>sudo apt-get install ngsolve</p><h3>Netplan</h3>
+<p style="padding-left: 30px;">sudo apt-get update<br/><br/>sudo apt-get install ngsolve</p>
+<h4>xterm 設定</h4>
+<p>.Xresources 檔案</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">xterm*font:     *-fixed-*-*-*-18-*</pre>
+<p>讓 .Xresources 設定生效:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">xrdb ~/.Xresources</pre>
+<p><br/><br/></p><h3>Netplan</h3>
 <p>若在 Windows 10 中啟動 Virtualbox Ubuntu 20.04 則可將網路設為 Host Only, 不使用 DHCP, 而進入 Ubuntu 之後, 以 netplan 手動設定在 Windows 10 可以連線的區域網路.</p>
 <p>例如: Windows Gateway 設為 192.168.56.1, 而 Host Only 虛擬主機設為 192.168.56.2</p>
 <p>/etc/netplan/00-installer-config.yaml</p>
@@ -2265,11 +2271,15 @@ final_file_object.close()
 <h4>Aquenduct</h4>
 <p><a href="https://aqueduct.io/">https://aqueduct.io/</a></p>
 <h2>Threejs</h2>
+<p><a href="https://threejs.org/docs/">https://threejs.org/docs/</a> </p>
 <p>Essential TypeScript</p>
 <p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-4979-6">https://link.springer.com/book/10.1007/978-1-4842-4979-6</a></p>
 <p><a href="https://github.com/threeDart/three.dart">https://github.com/threeDart/three.dart</a></p>
 <p style="padding-left: 30px;"><a href="http://threedart.github.io/three.dart/">http://threedart.github.io/three.dart/</a></p>
 <p><a href="https://github.com/block-forest/threejs-dart-facade">https://github.com/block-forest/threejs-dart-facade</a></p>
+<p><a href="https://pub.dev/packages/webgl_helper">https://pub.dev/packages/webgl_helper</a> </p><h2>CNC</h2>
+<p><a href="https://github.com/grbl/grbl">https://github.com/grbl/grbl</a> </p>
+<p><a href="https://github.com/filipecaixeta/cncwebsim">https://github.com/filipecaixeta/cncwebsim</a> </p>
 <h2>WebVR</h2>
 <p>Learning Web-based Virtual Reality</p>
 <p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-2710-7">https://link.springer.com/book/10.1007/978-1-4842-2710-7</a></p>
