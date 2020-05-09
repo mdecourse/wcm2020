@@ -2195,6 +2195,7 @@ doc["ball"].bind('click', Ball.prog)
 <h4>安裝 LXDE Window Manager (800 MB)</h4>
 <p style="padding-left: 30px;">sudo apt install lxde</p>
 <h4> 安裝 CMSiMDE 所需的 modules</h4>
+<p style="padding-left: 30px;">若 pip3 尚未安裝, 則以 sudo apt install python3-pip  進行安裝 (增加 200MB)</p>
 <p style="padding-left: 30px;">sudo pip3 install flask flask_cors lxml bs4 markdown pelican leo</p>
 <h4>安裝開發 Oauth2 所需模組</h4>
 <p style="padding-left: 30px;">sudo pip3 install authomatic github3.py</p>
@@ -2239,7 +2240,34 @@ doc["ball"].bind('click', Ball.prog)
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">xterm*font:     *-fixed-*-*-*-18-*</pre>
 <p>讓 .Xresources 設定生效:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">xrdb ~/.Xresources</pre>
-<p><br/><br/></p><h3>Netplan</h3>
+<h4>提高檔案開啟數量</h4>
+<p style="padding-left: 30px;"><code>vi /etc/security/limits.conf</code></p>
+<p style="padding-left: 30px;"><code>加入</code></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">* - nofile 40960</pre>
+<p style="padding-left: 30px;"> 利用</p>
+<p style="padding-left: 30px;">ulimit -a | grep ‘open files’ 檢查</p>
+<h4>安裝 Jupyterhub</h4>
+<p style="padding-left: 30px;">install npm and nodejs</p>
+<p style="padding-left: 60px;">sudo apt -y install npm nodejs</p>
+<p style="padding-left: 30px;">install proxy with npm</p>
+<p style="padding-left: 60px;">sudo npm install -g configurable-http-proxy</p>
+<p style="padding-left: 30px;">install jupyterhub</p>
+<p style="padding-left: 60px;">sudo pip3 install jupyterhub</p>
+<p style="padding-left: 30px;">install jupyter notebook</p>
+<p style="padding-left: 60px;">sudo pip3 install notebook</p>
+<p style="padding-left: 30px;">完成上述安裝後, 可以利用 jupyterhub --no-ssl 在近端以內定 port 8000 測試.</p>
+<p style="padding-left: 30px;">若要使用 https 啟動, 可利用</p>
+<p style="padding-left: 60px;">sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout jupyterhub.key -out jupyterhub.crt</p>
+<p style="padding-left: 30px;">建立所需的 key 與 certificate, 然後以</p>
+<p style="padding-left: 60px;">sudo jupyterhub --ip 192.168.56.3 --port 443 --ssl-key jupyterhub.key --ssl-cert jupyterhub.cert</p>
+<p style="padding-left: 30px;">啟動後, 利用 <a href="https://192.168.56.3">https://192.168.56.3</a> 進行連線.</p>
+<p style="padding-left: 30px;">其他與 Jupyterhub 有關的參考資料:</p>
+<p style="padding-left: 60px;"><a href="http://project.mde.tw/blog/yen-ji-jie-she-ji-zhuan-ti-xue-yuan-de-sui-shen-jupyter-hub.html">http://project.mde.tw/blog/yen-ji-jie-she-ji-zhuan-ti-xue-yuan-de-sui-shen-jupyter-hub.html</a></p>
+<p style="padding-left: 60px;"><a href="https://cadlab.mde.tw/post/jupyterhub-oauth2-deng-ru-she-ding.html">https://cadlab.mde.tw/post/jupyterhub-oauth2-deng-ru-she-ding.html</a></p>
+<p style="padding-left: 60px;"><a href="https://chiamingyen.github.io/kmolab/blog/jin-duan-jupyterhub-dian-nao-zhu-ji-she-ding.html">https://chiamingyen.github.io/kmolab/blog/jin-duan-jupyterhub-dian-nao-zhu-ji-she-ding.html</a></p>
+<p style="padding-left: 60px;"><a href="https://github.com/jupyterhub/jupyterhub/wiki/Installation-of-Jupyterhub-on-remote-server">https://github.com/jupyterhub/jupyterhub/wiki/Installation-of-Jupyterhub-on-remote-server</a></p>
+<h4>利用網際 Python 程式解平面多連桿機構運動模擬方程式:</h4>
+<p style="padding-left: 30px;"><a href="http://lab.kmol.info/2017fall/blog/kmol-brython-editor-331.html">http://lab.kmol.info/2017fall/blog/kmol-brython-editor-331.html</a></p><h3>Netplan</h3>
 <p>若在 Windows 10 中啟動 Virtualbox Ubuntu 20.04 則可將網路設為 Host Only, 不使用 DHCP, 而進入 Ubuntu 之後, 以 netplan 手動設定在 Windows 10 可以連線的區域網路.</p>
 <p>例如: Windows Gateway 設為 192.168.56.1, 而 Host Only 虛擬主機設為 192.168.56.2</p>
 <p>/etc/netplan/00-installer-config.yaml</p>

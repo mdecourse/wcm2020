@@ -357,8 +357,6 @@ WantedBy=multi-user.target</pre>
 <p style="padding-left: 30px;"><a href="https://drive.google.com/open?id=1uwFqkY_LJs2HdhVDOJyyIKc-3QdseJuu">wcm w8 第三段錄影</a></p>
 <h4>W9</h4>
 <p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1UFvoiCHVGLdyc8t4yvsaHF1PaU0evipH/view?usp=sharing">wcm w9 直播錄影</a></p>
-<<<<<<< HEAD
-=======
 <h4>W10</h4>
 <p style="padding-left: 30px;">說明如何利用 Python 程式讀取學員修課檔案, 以及從 Google Sheet 轉出的 .csv, 分別處理為 List 與 Dictionary 資料格式之後, 逐一根據學員 List 學號, 從 Dictionary 取出自評成績.</p>
 <p style="padding-left: 60px;"><a href="https://drive.google.com/file/d/1JtzoMv7_k307l2ZXgJExKU7z5cwvnGPu/view?usp=sharing">wcm w10-1</a></p>
@@ -422,8 +420,95 @@ for i in student:
     #print(f'Processed {line_count} lines.')
     #print("平均=" + str(total/line_count))
 </pre>
->>>>>>> 4b8a32e03fab017afd575112895110cfa0dad70a
 <hr/>
+<p style="padding-left: 30px;"><a href="https://drive.google.com/file/d/1-rUis6vnks-IaKvsKJqPjqfr4rRIX8S9/view?usp=sharing">wcm_w10-4</a></p>
+<h4 style="padding-left: 30px;">flask 程式一:</h4>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask
+ 
+app = Flask(__name__)
+ 
+@app.route('/') 
+def hello_world():
+    return 'Hello, From Flask!'
+ 
+if __name__== '__main__': 
+    app.run()</pre>
+<p style="padding-left: 30px;">Flask 程式二:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask, render_template
+import ssl
+import csv
+ 
+context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+context.load_cert_chain('localhost.crt', 'localhost.key')
+ 
+app = Flask(__name__)
+ 
+@app.route('/') 
+def hello_world():
+    return 'Hello, From Flask!'
+ 
+@app.route('/ROCflag')
+def drawROC():
+    return render_template("ROCflag.html")
+
+@app.route("/midterm")
+def midterm():
+    # read student list
+
+    filename = '1a_list.txt'
+    with open(filename, encoding="utf-8") as f:
+        content = f.readlines()
+    #print(content)
+    student = [x.strip() for x in content] 
+    #print(student)
+
+
+    # Timestamp, email, 修課名稱, url, score, desp, memo
+    # 0, 1, 2, 3, 4, 5, 6
+    #total = 0
+    all = {}
+    with open('2020midterm.csv', encoding="utf-8") as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        #print(csv_reader)
+
+        line_count = 0
+        for row in csv_reader:
+            if line_count == 0:
+                #print(f'Column names are {", ".join(row)}')
+                line_count += 1
+            else:
+                student_num = row[1].split("@")[0]
+                #print(student_num)
+                student_score = row[3]
+                #print(student_score)
+                try:
+                    all.update({student_num: student_score})
+                except:
+                    all.update({student_num: "error"})
+                #print(f'\t{row[0]} works in the {row[1]} department, and was born in {row[2]}.')
+                #print(f'\t{row[4]}')
+                #total += int(row[4])
+                line_count += 1
+    #print(all)
+    #print(student)
+
+    output = ""
+    for i in student:
+        
+        #if i in all:
+            #pass
+        #else:
+            #print(str(i))
+        
+        try:
+            output += (str(i) + ": &lt;a href='" + str(all[i]) + "'&gt;"+ str(all[i]) + "&lt;/a&gt;&lt;br /&gt;")
+        except:
+            output += (str(i) + ": no data&lt;br/&gt;")
+        
+    return output
+     
+if __name__== '__main__': 
+    app.run(ssl_context=context)</pre>
 <p>當使用 git 指令 push 時, Windows 跳出要求使用者登入 github 的帳號與密碼視窗時, 一旦在此視窗輸入帳號與密碼, Windows 會將此帳號密碼登錄在操作系統中. 為了達到使用可攜的目錄, 可以利用下列指令:</p>
 <p style="padding-left: 30px;">git config --edit --system </p>
 <p>以 vi 編輯器將 credential -&gt; helper 欄位刪除後存檔, 之後 git 便不會再要求 Windows 操作系統代存使用者的相關帳號與密碼.</p>
@@ -444,6 +529,7 @@ for i in student:
 <p><a href="https://drive.google.com/open?id=1sMTT_sFO_83fPaogdJUQ1v7oM9NaEb_M">COMSOL 5.5 DVD</a> 下載 (請登入 @gm 帳號後下載)</p>
 <p><a href="https://drive.google.com/open?id=143jFMheM1xjLxhLkSAouThLzj3WUYX6_">Ubuntu 20.04 Virtualbox</a> 下載, 可用於 CMSiMDE, Oauth2 and CoppeliaSim RemoteAPI 開發 (請登入 @gm 帳號後下載)</p>
 <p>安裝步驟請根據上課說明進行.</p><h2>Python</h2>
+<p><a href="https://www.learnpython.org/">https://www.learnpython.org/</a> </p>
 <p>課程評分程式</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">'''
 根據評分表單中的 自評分數, 互評得分, 教師評分, 計算學員課程成績
@@ -2092,8 +2178,7 @@ doc["ball"].bind('click', Ball.prog)
 <p><button id="keyword">Keyword</button><button id="ex1">Ex1</button><button id="ex2">Ex2</button><button id="ex3">Ex3</button><button id="ex4">Ex4</button><button id="forloop">Ex5</button><button id="guess">Guess</button><button id="autoguess">Autoguess</button><button id="lottery">大樂透</button><button id="weleadlottery">威力彩</button><button id="temp">Temp</button><button id="draw">Draw</button><button id="flag">Flag</button><button id="bezier">Bezier</button><button id="turtle1">Turtle1</button><button id="turtle2">Turtle2</button><button id="turtle3">Turtle3</button><button id="turtle4">Turtle4</button><button id="turtle5">Turtle5</button><button id="turtle6">Turtle6</button><button id="turtle7">Turtle7</button><button id="turtle8">Turtle8</button><button id="konva1">Konva1</button><button id="bunny">Bunny</button><button id="ball">Ball</button><button id="spur">Spur</button><button id="ycqsort">Ycqsort</button><button id="clear">Clear</button></p>
 <h4>參考資料:</h4>
 <p><a href="/downloads/turtle_intro.pdf">turtle_intro.pdf</a></p>
-<p><a href="/downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p>
-<h2>Virtualbox</h2>
+<p><a href="/downloads/turtle_intro2.pdf">turtle_intro2.pdf</a></p><h2>Virtualbox</h2>
 <p>更改 win10_64_comsol5.5.vmdk 的 UUID</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">"c:\Program Files\Oracle\VirtualBox\VBoxManage.exe" internalcommands sethduuid win10_64_comsol5.5.vmdk</pre>
 <p><br/><br/></p><h2>Ubuntu</h2>
@@ -2110,6 +2195,7 @@ doc["ball"].bind('click', Ball.prog)
 <h4>安裝 LXDE Window Manager (800 MB)</h4>
 <p style="padding-left: 30px;">sudo apt install lxde</p>
 <h4> 安裝 CMSiMDE 所需的 modules</h4>
+<p style="padding-left: 30px;">若 pip3 尚未安裝, 則以 sudo apt install python3-pip  進行安裝 (增加 200MB)</p>
 <p style="padding-left: 30px;">sudo pip3 install flask flask_cors lxml bs4 markdown pelican leo</p>
 <h4>安裝開發 Oauth2 所需模組</h4>
 <p style="padding-left: 30px;">sudo pip3 install authomatic github3.py</p>
@@ -2154,7 +2240,35 @@ doc["ball"].bind('click', Ball.prog)
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">xterm*font:     *-fixed-*-*-*-18-*</pre>
 <p>讓 .Xresources 設定生效:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">xrdb ~/.Xresources</pre>
-<p><br/><br/></p><h3>Netplan</h3>
+<h4>提高檔案開啟數量</h4>
+<p style="padding-left: 30px;"><code>vi /etc/security/limits.conf</code></p>
+<p style="padding-left: 30px;"><code>加入</code></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">* - nofile 40960</pre>
+<p style="padding-left: 30px;"> 利用</p>
+<p style="padding-left: 30px;">ulimit -a | grep ‘open files’ 檢查</p>
+<h4>安裝 Jupyterhub</h4>
+<p style="padding-left: 30px;">install npm and nodejs</p>
+<p style="padding-left: 60px;">sudo apt -y install npm nodejs</p>
+<p style="padding-left: 30px;">install proxy with npm</p>
+<p style="padding-left: 60px;">sudo npm install -g configurable-http-proxy</p>
+<p style="padding-left: 30px;">install jupyterhub</p>
+<p style="padding-left: 60px;">sudo pip3 install jupyterhub</p>
+<p style="padding-left: 30px;">install jupyter notebook</p>
+<p style="padding-left: 60px;">sudo pip3 install notebook</p>
+<p style="padding-left: 30px;">完成上述安裝後, 可以利用 jupyterhub --no-ssl 在近端以內定 port 8000 測試.</p>
+<p style="padding-left: 30px;">若要使用 https 啟動, 可利用</p>
+<p style="padding-left: 60px;">sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout jupyterhub.key -out jupyterhub.crt</p>
+<p style="padding-left: 30px;">建立所需的 key 與 certificate, 然後以</p>
+<p style="padding-left: 60px;">sudo jupyterhub --ip 192.168.56.3 --port 443 --ssl-key jupyterhub.key --ssl-cert jupyterhub.cert</p>
+<p style="padding-left: 30px;">啟動後, 利用 <a href="https://192.168.56.3">https://192.168.56.3</a> 進行連線.</p>
+<p style="padding-left: 30px;">其他與 Jupyterhub 有關的參考資料:</p>
+<p style="padding-left: 60px;"><a href="http://project.mde.tw/blog/yen-ji-jie-she-ji-zhuan-ti-xue-yuan-de-sui-shen-jupyter-hub.html">http://project.mde.tw/blog/yen-ji-jie-she-ji-zhuan-ti-xue-yuan-de-sui-shen-jupyter-hub.html</a></p>
+<p style="padding-left: 60px;"><a href="https://cadlab.mde.tw/post/jupyterhub-oauth2-deng-ru-she-ding.html">https://cadlab.mde.tw/post/jupyterhub-oauth2-deng-ru-she-ding.html</a></p>
+<p style="padding-left: 60px;"><a href="https://chiamingyen.github.io/kmolab/blog/jin-duan-jupyterhub-dian-nao-zhu-ji-she-ding.html">https://chiamingyen.github.io/kmolab/blog/jin-duan-jupyterhub-dian-nao-zhu-ji-she-ding.html</a></p>
+<p style="padding-left: 60px;"><a href="https://github.com/jupyterhub/jupyterhub/wiki/Installation-of-Jupyterhub-on-remote-server">https://github.com/jupyterhub/jupyterhub/wiki/Installation-of-Jupyterhub-on-remote-server</a></p>
+<h4>利用網際 Python 程式解平面多連桿機構運動模擬方程式:</h4>
+<p style="padding-left: 30px;"><a href="http://lab.kmol.info/2017fall/blog/kmol-brython-editor-331.html">http://lab.kmol.info/2017fall/blog/kmol-brython-editor-331.html</a> </p>
+<p style="padding-left: 30px;"></p><h3>Netplan</h3>
 <p>若在 Windows 10 中啟動 Virtualbox Ubuntu 20.04 則可將網路設為 Host Only, 不使用 DHCP, 而進入 Ubuntu 之後, 以 netplan 手動設定在 Windows 10 可以連線的區域網路.</p>
 <p>例如: Windows Gateway 設為 192.168.56.1, 而 Host Only 虛擬主機設為 192.168.56.2</p>
 <p>/etc/netplan/00-installer-config.yaml</p>
