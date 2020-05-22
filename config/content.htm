@@ -2293,7 +2293,27 @@ doc["ball"].bind('click', Ball.prog)
 <p style="padding-left: 60px;"><a href="https://chiamingyen.github.io/kmolab/blog/jin-duan-jupyterhub-dian-nao-zhu-ji-she-ding.html">https://chiamingyen.github.io/kmolab/blog/jin-duan-jupyterhub-dian-nao-zhu-ji-she-ding.html</a></p>
 <p style="padding-left: 60px;"><a href="https://github.com/jupyterhub/jupyterhub/wiki/Installation-of-Jupyterhub-on-remote-server">https://github.com/jupyterhub/jupyterhub/wiki/Installation-of-Jupyterhub-on-remote-server</a></p>
 <h4>利用網際 Python 程式解平面多連桿機構運動模擬方程式:</h4>
-<p style="padding-left: 30px;"><a href="http://lab.kmol.info/2017fall/blog/kmol-brython-editor-331.html">http://lab.kmol.info/2017fall/blog/kmol-brython-editor-331.html</a></p><h3>Netplan</h3>
+<p style="padding-left: 30px;"><a href="http://lab.kmol.info/2017fall/blog/kmol-brython-editor-331.html">http://lab.kmol.info/2017fall/blog/kmol-brython-editor-331.html</a></p><h3>伺服器管理</h3>
+<p>常用指令:</p>
+<p style="padding-left: 30px;">env - 列出 Shell 環境變數</p>
+<p style="padding-left: 30px;">history - 列出歷史指令, 可利用上下 arrow 鍵列出先前輸入的指令, 也可以使用 Ctrl + p 與 Ctrl + N 往前或往後列出歷史指令.</p>
+<p style="padding-left: 30px;">Ctrl + c - 終止指令執行</p>
+<p style="padding-left: 30px;">Ctrl + z - 跳出互動指令執行模式</p>
+<p style="padding-left: 30px;">cd - change directory</p>
+<p style="padding-left: 30px;">pwd - print working directory</p>
+<p style="padding-left: 30px;">mkdir - make directory</p>
+<p style="padding-left: 30px;">rmdir - remove directory</p>
+<p style="padding-left: 30px;">ls - list files</p>
+<p style="padding-left: 30px;">rm - remove files</p>
+<p style="padding-left: 30px;">cp - copy files</p>
+<p style="padding-left: 30px;">mv - move files</p>
+<p style="padding-left: 30px;">cat - display content of a file</p>
+<p style="padding-left: 30px;">tail - show just the last lines of a file</p>
+<p style="padding-left: 30px;">head - display first lines of a file</p>
+<p style="padding-left: 30px;">grep - grep keyword files</p>
+<p>重要檔案:</p>
+<p style="padding-left: 30px;">每一用戶登入後都會執行 /etc/profile, 因此若有共用的環境變數, 可以寫進 /etc/profile 設定檔案</p>
+<p></p><h3>Netplan</h3>
 <p>若在 Windows 10 中啟動 Virtualbox Ubuntu 20.04 則可將網路設為 Host Only, 不使用 DHCP, 而進入 Ubuntu 之後, 以 netplan 手動設定在 Windows 10 可以連線的區域網路.</p>
 <p>例如: Windows Gateway 設為 192.168.56.1, 而 Host Only 虛擬主機設為 192.168.56.2</p>
 <p>/etc/netplan/00-installer-config.yaml</p>
