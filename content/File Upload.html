@@ -1,0 +1,545 @@
+<!DOCTYPE html><html>
+        <head>
+        <title>WCM2020 網際內容管理系統</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/magnific-popup.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/jquery-ui.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/flaticon/font/flaticon.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/aos.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/style.css">
+        <link rel="shortcut icon" href="./../cmsimde/static/favicons.png">
+        
+        <style type='text/css'>
+            .site-section {
+            background-color: #FFFF;
+            padding: 40px 40px;
+            }
+            body > div > div.dropdown.open {
+                display: block;
+            }
+        </style>
+    
+        <!-- <script src="./../cmsimde/static/jquery.js"></script> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+        <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/normalize.min.css">
+        <script src="./../cmsimde/static/tipuesearch/tipuesearch_set.js"></script>
+        <script src="tipuesearch_content.js"></script>
+        <link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/tipuesearch.css">
+        <script src="./../cmsimde/static/tipuesearch/tipuesearch.js"></script>
+        <script>
+            /* original tipuesearch
+            $(document).ready(function() {
+                 $('#tipue_search_input').tipuesearch();
+            });
+            */
+            // customed doSearch
+            function doSearch() {
+                $('#tipue_search_input').tipuesearch({
+                    newWindow: true, 
+                    minimumLength: 2,
+                    wholeWords: false, // for search 中文
+                });
+            }
+            $(document).ready(doSearch);
+        </script>
+        
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushHaxe.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushLua.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCpp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushDart.js"></script>
+<link type="text/css" rel="stylesheet" href="./../cmsimde/static/syntaxhighlighter/css/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- 啟用 LaTeX equations 編輯 -->
+<script src="https://scrum-3.github.io/web/math/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+            },
+            displayAlign: 'left', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+}
+init_mathjax();
+</script>
+
+<!-- 暫時不用
+<script src="./../cmsimde/static/fengari-web.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/Cango-13v08-min.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/CangoAxes-4v01-min.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/gearUtils-05.js"></script>
+-->
+<!-- for Brython 暫時不用
+<script src="https://scrum-3.github.io/web/brython/brython.js"></script>
+<script src="https://scrum-3.github.io/web/brython/brython_stdlib.js"></script>
+-->
+<style>
+img.add_border {
+    border: 3px solid blue;
+}
+</style>
+
+</head>
+<body>
+<div class='container'><nav>
+        
+    <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+            <header class="site-navbar py-4 bg-white" role="banner">
+              <div class="container-fluid">
+                <div class="row align-items-center">
+                <h1>2020 Spring 網際內容管理</h1>
+                <div class="pl-4">
+                    <form>
+                    <input type="text" placeholder="Search" name="q" id="tipue_search_input" pattern=".{2,}" title="At least 2 characters" required>
+                    </form>
+                </div>
+                  <!-- <div class="col-11 col-xl-2">
+                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">2020 Spring 網際內容管理</a></h1> 
+                  </div>
+                  -->
+                  <div class="col-12 col-md-10 d-none d-xl-block">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+    <ul class='site-menu js-clone-nav mr-auto d-none d-lg-block'>
+                        <li class="active has-children"><a href="index.html">Home</a>
+                        <ul class="dropdown">
+                            <li><a href="sitemap.html">Site Map</a></li>
+                            <li><a href="./../reveal/index.html">reveal</a></li>
+                            <li><a href="./../blog/index.html">blog</a></li>
+                        </ul>
+                      </li>
+                     <li><a href='About.html'>About</a><li class='has-children'><a href='Grouping.html'>Grouping</a><ul class='dropdown'><li><a href='1a.html'>1a</a></li></ul><li class='has-children'><a href='Topics.html'>Topics</a><ul class='dropdown'><li><a href='W6-W9.html'>W6-W9</a><li><a href='W10-W11.html'>W10-W11</a><li><a href='W12-W18.html'>W12-W18</a><li><a href='MDETools.html'>MDETools</a><li><a href='Python.html'>Python</a><li><a href='Virtualbox.html'>Virtualbox</a><li class='has-children'><a href='Ubuntu.html'>Ubuntu</a><ul class='dropdown'><li><a href='伺服器管理.html'>伺服器管理</a><li><a href='Netplan.html'>Netplan</a></li></li></ul></ul><li><a href='Dartpad.html'>Dartpad</a><li class='has-children'><a href='Project.html'>Project</a><ul class='dropdown'><li><a href='Tools.html'>Tools</a><li><a href='File Upload.html'>File Upload</a><li><a href='Python as backend.html'>Python as backend</a><li><a href='Dart as backend.html'>Dart as backend</a><li><a href='Threejs.html'>Threejs</a><li><a href='CNC.html'>CNC</a><li><a href='WebVR.html'>WebVR</a></li>
+                      </ul>
+                </nav>
+              </div>
+              <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+              </div>
+
+            </div>
+          </div>
+          
+        </header>
+    <div id="tipue_search_content">Tools << <a href='Tools.html'>Previous</a> <a href='Python as backend.html'>Next</a> >> Python as backend<br /><h1>File Upload</h1>
+<p>Example 1:</p>
+<p style="padding-left: 30px;"><a href="https://gist.github.com/tanaikech/88fcae255abb4aac5bec81ad5ca213ef">https://gist.github.com/tanaikech/88fcae255abb4aac5bec81ad5ca213ef</a></p>
+<p>Example 2:</p>
+<p style="padding-left: 30px;"><a href="https://github.com/sashee/drive-api-from-js">https://github.com/sashee/drive-api-from-js</a></p>
+<p>Example 3:</p>
+<p style="padding-left: 30px;"><a href="https://gist.github.com/tanaikech/2f16f467c94612dc83920a3158614d95">https://gist.github.com/tanaikech/2f16f467c94612dc83920a3158614d95</a></p>
+<p>Example 4:</p>
+<p style="padding-left: 30px;"><a href="https://gist.github.com/tanaikech/bd53b366aedef70e35a35f449c51eced">https://gist.github.com/tanaikech/bd53b366aedef70e35a35f449c51eced</a> </p>
+<p>Example 5:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">// upload.js, from https://github.com/googledrive/cors-upload-sample
+// Contributors Steve Bazyl, Mike Procopio, Jeffrey Posnick, Renaud Sauvain
+// License: Apache 2.0 http://www.apache.org/licenses/LICENSE-2.0
+//
+// Implements Resumable Upload for Google Drive as described by
+// https://developers.google.com/drive/v3/web/resumable-upload
+//
+// Modified by Paul Brewer, Economic and Financial Technology Consulting LLC
+// Nov. 1 2017
+//  1. use Google Drive API V3 instead of V2
+//  2. wrap code in a "use strict" IIFE, only exposing MediaUploader
+//  3. explicitly export MediaUploader as window.UploaderForGoogleDrive
+//  4. if options.token undefined, get access token from existing window.gapi instance, if any
+//
+// Nov. 7, 2017
+//  5. Change file metadata "title" to "name" in line with Drive API v2--&gt;v3 migration advisory
+//  6. export promise wrapper as window.pUploaderForGoogleDrive
+
+// jshint browser:true, strict:true
+
+window.UploaderForGoogleDrive = (function(){
+    "use strict";
+
+    /**
+     * Helper for implementing retries with backoff. Initial retry
+     * delay is 1 second, increasing by 2x (+jitter) for subsequent retries
+     *
+     * @constructor
+     */
+
+    var RetryHandler = function() {
+	this.interval = 1000; // Start at one second
+	this.maxInterval = 60 * 1000; // Don't wait longer than a minute 
+    };
+
+    /**
+     * Invoke the function after waiting
+     *
+     * @param {function} fn Function to invoke
+     */
+    RetryHandler.prototype.retry = function(fn) {
+	setTimeout(fn, this.interval);
+	this.interval = this.nextInterval_();
+    };
+
+    /**
+     * Reset the counter (e.g. after successful request.)
+     */
+    RetryHandler.prototype.reset = function() {
+	this.interval = 1000;
+    };
+
+    /**
+     * Calculate the next wait time.
+     * @return {number} Next wait interval, in milliseconds
+     *
+     * @private
+     */
+    RetryHandler.prototype.nextInterval_ = function() {
+	var interval = this.interval * 2 + this.getRandomInt_(0, 1000);
+	return Math.min(interval, this.maxInterval);
+    };
+
+    /**
+     * Get a random int in the range of min to max. Used to add jitter to wait times.
+     *
+     * @param {number} min Lower bounds
+     * @param {number} max Upper bounds
+     * @private
+     */
+    RetryHandler.prototype.getRandomInt_ = function(min, max) {
+	return Math.floor(Math.random() * (max - min + 1) + min);
+    };
+
+
+    /**
+     * Helper class for resumable uploads using XHR/CORS. Can upload any Blob-like item, whether
+     * files or in-memory constructs.
+     *
+     * @example
+     * var content = new Blob(["Hello world"], {"type": "text/plain"});
+     * var uploader = new MediaUploader({
+     *   file: content,
+     *   token: accessToken,
+     *   onComplete: function(data) { ... }
+     *   onError: function(data) { ... }
+     * });
+     * uploader.upload();
+     *
+     * @constructor
+     * @param {object} options Hash of options
+     * @param {string} options.token Access token
+     * @param {blob} options.file Blob-like item to upload
+     * @param {string} [options.fileId] ID of file if replacing
+     * @param {object} [options.params] Additional query parameters
+     * @param {string} [options.contentType] Content-type, if overriding the type of the blob.
+     * @param {object} [options.metadata] File metadata
+     * @param {function} [options.onComplete] Callback for when upload is complete
+     * @param {function} [options.onProgress] Callback for status for the in-progress upload
+     * @param {function} [options.onError] Callback if upload fails
+     */
+    var MediaUploader = function(options) {
+	var noop = function() {};
+	this.file = options.file;
+	this.contentType = options.contentType || this.file.type || 'application/octet-stream';
+	this.metadata = options.metadata || {
+	    'name': this.file.name,
+	    'mimeType': this.contentType
+	};
+	// if options.token omitted, get access_token from existing window.gapi instance, if any : PJB 2017-11-01
+	// see https://developers.google.com/api-client-library/javascript/reference/referencedocs
+	if (options.token){
+	    this.token = options.token;
+	} else {
+	    try {
+		this.token = (window.gapi
+			      .auth2
+			      .getAuthInstance()
+			      .currentUser
+			      .get()
+			      .getAuthResponse(true)
+			      .access_token
+			     );
+	    } catch(e){
+		console.log(e);
+		throw new Error("Uploader: missing Google OAuth2 access_token");
+	    }
+	}
+	// end access_token patch -- PJB 2017-11-01
+	this.onComplete = options.onComplete || noop;
+	this.onProgress = options.onProgress || noop;
+	this.onError = options.onError || noop;
+	this.offset = options.offset || 0;
+	this.chunkSize = options.chunkSize || 0;
+	this.retryHandler = new RetryHandler();
+
+	this.url = options.url;
+	if (!this.url) {
+	    var params = options.params || {};
+	    params.uploadType = 'resumable';
+	    this.url = this.buildUrl_(options.fileId, params, options.baseUrl);
+	}
+	// PJB 2018.01.22 Change "update/replace" method from "PUT" to "PATCH"
+	//   per https://developers.google.com/drive/v3/reference/files/update
+	this.httpMethod = options.fileId ? 'PATCH' : 'POST';
+    };
+
+    /**
+     * Initiate the upload.
+     */
+    MediaUploader.prototype.upload = function() {
+	var self = this;
+	var xhr = new XMLHttpRequest();
+
+	xhr.open(this.httpMethod, this.url, true);
+	xhr.setRequestHeader('Authorization', 'Bearer ' + this.token);
+	xhr.setRequestHeader('Content-Type', 'application/json');
+	xhr.setRequestHeader('X-Upload-Content-Length', this.file.size);
+	xhr.setRequestHeader('X-Upload-Content-Type', this.contentType);
+
+	xhr.onload = function(e) {
+	    if (e.target.status &lt; 400) {
+		var location = e.target.getResponseHeader('Location');
+		this.url = location;
+		this.sendFile_();
+	    } else {
+		this.onUploadError_(e);
+	    }
+	}.bind(this);
+	xhr.onerror = this.onUploadError_.bind(this);
+	xhr.send(JSON.stringify(this.metadata));
+    };
+
+    /**
+     * Send the actual file content.
+     *
+     * @private
+     */
+    MediaUploader.prototype.sendFile_ = function() {
+	var content = this.file;
+	var end = this.file.size;
+
+	if (this.offset || this.chunkSize) {
+	    // Only bother to slice the file if we're either resuming or uploading in chunks
+	    if (this.chunkSize) {
+		end = Math.min(this.offset + this.chunkSize, this.file.size);
+	    }
+	    content = content.slice(this.offset, end);
+	}
+
+	var xhr = new XMLHttpRequest();
+	xhr.open('PUT', this.url, true);
+	xhr.setRequestHeader('Content-Type', this.contentType);
+	xhr.setRequestHeader('Content-Range', "bytes " + this.offset + "-" + (end - 1) + "/" + this.file.size);
+	xhr.setRequestHeader('X-Upload-Content-Type', this.file.type);
+	if (xhr.upload) {
+	    xhr.upload.addEventListener('progress', this.onProgress);
+	}
+	xhr.onload = this.onContentUploadSuccess_.bind(this);
+	xhr.onerror = this.onContentUploadError_.bind(this);
+	xhr.send(content);
+    };
+
+    /**
+     * Query for the state of the file for resumption.
+     *
+     * @private
+     */
+    MediaUploader.prototype.resume_ = function() {
+	var xhr = new XMLHttpRequest();
+	xhr.open('PUT', this.url, true);
+	xhr.setRequestHeader('Content-Range', "bytes */" + this.file.size);
+	xhr.setRequestHeader('X-Upload-Content-Type', this.file.type);
+	if (xhr.upload) {
+	    xhr.upload.addEventListener('progress', this.onProgress);
+	}
+	xhr.onload = this.onContentUploadSuccess_.bind(this);
+	xhr.onerror = this.onContentUploadError_.bind(this);
+	xhr.send();
+    };
+
+    /**
+     * Extract the last saved range if available in the request.
+     *
+     * @param {XMLHttpRequest} xhr Request object
+     */
+    MediaUploader.prototype.extractRange_ = function(xhr) {
+	var range = xhr.getResponseHeader('Range');
+	if (range) {
+	    this.offset = parseInt(range.match(/\d+/g).pop(), 10) + 1;
+	}
+    };
+
+    /**
+     * Handle successful responses for uploads. Depending on the context,
+     * may continue with uploading the next chunk of the file or, if complete,
+     * invokes the caller's callback.
+     *
+     * @private
+     * @param {object} e XHR event
+     */
+    MediaUploader.prototype.onContentUploadSuccess_ = function(e) {
+	if (e.target.status == 200 || e.target.status == 201) {
+	    this.onComplete(e.target.response);
+	} else if (e.target.status == 308) {
+	    this.extractRange_(e.target);
+	    this.retryHandler.reset();
+	    this.sendFile_();
+	} else {
+	    this.onContentUploadError_(e);
+	}
+    };
+
+    /**
+     * Handles errors for uploads. Either retries or aborts depending
+     * on the error.
+     *
+     * @private
+     * @param {object} e XHR event
+     */
+    MediaUploader.prototype.onContentUploadError_ = function(e) {
+	if (e.target.status &amp;&amp; e.target.status &lt; 500) {
+	    this.onError(e.target.response);
+	} else {
+	    this.retryHandler.retry(this.resume_.bind(this));
+	}
+    };
+
+    /**
+     * Handles errors for the initial request.
+     *
+     * @private
+     * @param {object} e XHR event
+     */
+    MediaUploader.prototype.onUploadError_ = function(e) {
+	this.onError(e.target.response); // TODO - Retries for initial upload
+    };
+
+    /**
+     * Construct a query string from a hash/object
+     *
+     * @private
+     * @param {object} [params] Key/value pairs for query string
+     * @return {string} query string
+     */
+    MediaUploader.prototype.buildQuery_ = function(params) {
+	params = params || {};
+	return Object.keys(params).map(function(key) {
+	    return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
+	}).join('&amp;');
+    };
+
+    /**
+     * Build the drive upload URL
+     *
+     * @private
+     * @param {string} [id] File ID if replacing
+     * @param {object} [params] Query parameters
+     * @return {string} URL
+     */
+    MediaUploader.prototype.buildUrl_ = function(id, params, baseUrl) {
+	// modified next line to use v3, not v2 -- PJB, 2017-11-01
+	var url = baseUrl || 'https://www.googleapis.com/upload/drive/v3/files/';
+	if (id) {
+	    url += id;
+	}
+	var query = this.buildQuery_(params);
+	if (query) {
+	    url += '?' + query;
+	}
+	return url;
+    };
+
+
+    return MediaUploader;
+    
+})();
+
+window.pUploaderForGoogleDrive = function(options){
+    "use strict";
+    return new Promise(function(resolve, reject){
+	options.onComplete = function(r){
+	    var response;
+	    try {
+		response = (typeof(r)==='string')? JSON.parse(r): r;
+	    } catch(e){
+		response = r;
+	    }
+	    resolve(response);
+	};
+	options.onError = function(e){ reject(e); };
+	var uploader = new window.UploaderForGoogleDrive(options);
+	uploader.upload();
+    });
+};
+</pre>
+<p></p><br />Tools << <a href='Tools.html'>Previous</a> <a href='Python as backend.html'>Next</a> >> Python as backend</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cmsimde/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cmsimde/static/chimper/js/popper.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cmsimde/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cmsimde/static/chimper/js/main.js"></script>
+        </body></html>
+        
