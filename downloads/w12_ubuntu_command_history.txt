@@ -1,0 +1,308 @@
+1  clear (清除畫面)
+2  sudo halt (關機)
+3  sudo apt install xorg
+4  sudo apt install fluxbox fluxconf
+5  sudo apt install lxde
+6  sudo reboot
+7  xterm&
+8  sudo apt install xterm
+9  sudo apt install firefox
+10  sudo apt install python3-pip
+11  sudo halt
+12  ls -l
+13  python3 list
+14  pip3 list
+15  pip3 install flask flask_cors lxml bs4 markdown pelican leo authomatic imutils numpy
+16  xterm&
+17  cd /etc/netplan
+18  ls -l
+19  sudo vi 00-installer-config.yaml
+20  sudo halt
+21  cd tmp
+22  ls -l
+23  mkdir tmp
+24  cd tmp
+25  git clone --recurse-submodules https://github.com/mdecourse/cd2020pj1.git
+26  cd cd2020pj1
+27  ls -l
+28  python3 wsgi.py
+29  cd docs
+30  ls -l
+31  cd cmsimde
+32  python3 wsgi.py
+33  cd ..
+34  cd wcm2020
+35  cd cmsimde
+36  python3 wsgi.py
+37  cd ..
+38  cd wcmj2020
+39  cd cmsimde
+40  python3 wsgi.py
+41  cd
+42  cd tmp
+43  ls -l
+44  git clone --recurse-submodules https://github.com/mdecourse/wcm2020.git
+45  git clone --recurse-submodules https://github.com/mdecourse/wcmj2020.git
+46  xterm&
+47  ping 140.130.17.254
+48  sudo netplan apply
+49  cd /etc/netplan
+50  ls -l
+51  sudo vi 00-installer-config.yaml
+52  sudo netplan apply
+53  ping 140.130.17.254
+54  leo&
+55  firefox&
+56  xterm&
+57  pwd
+58  ls -l
+59  python3 car_model.py
+60  sudo pip3 install opencv-python3
+61  sudo pip3 install opencv-python
+62  python3 car_model.py
+63  clear
+64  sudo apt install scite
+65  scite&
+66  pwd
+67  cd tmp
+68  ls -l
+69  cd self_driving_car
+70  ls -l
+71  cd CoppeliaSim_4_Self_Driving_Car_Simulation
+72  ls -l
+73  xterm&
+74  ls -l
+75  cd
+76  ls -l
+77  cd coppeliasim4_rev4
+78  ls -l
+79  cd CoppeliaSim_Edu_V4_0_0_Ubuntu18_04
+80  ls -l
+81  cd programming
+82  ls -l
+83  cd remoteApiBinds
+84  ls -l
+85  cd remoteApiBindings
+86  ls -l
+87  cd Lib
+88  ls -l
+89  cd lib
+90  ls -l
+91  cd lib
+92  ls -l
+93  cd Ubuntu18_04
+94  ls -l
+95  sudo cp remoteApi.so /home/kmol2020/tmp/self_driving_car/CoppeliaSim_4_Self_Driving_Car_Simulation
+96  kmol2020@kmol2020:~/tmp/self_driving_car/CoppeliaSim_4_Self_Driving_Car_Simulation
+97  cd /etc/netplan
+98  ls -l
+99  sudo vi 00-installer-config.yaml
+100  sudo netplan apply
+101  sudo vi 00-installer-config.yaml
+102  sudo netplan apply
+103  ping 2001:288:6004:17::254
+104  sudo halt
+105  xterm&
+106  ping www.google.com
+107  ifconfig
+108  ping6 2001:288:6004:17::254
+109  ping localhost
+110  ping 10.0.0.1
+111  ping 10.0.2.2
+112  ping 10.0.2.1
+113  ping 2001:288:6004:17::254
+114  ping 140.130.17.254
+115  cd /etc/netplan
+116  ls -l
+117  sudo vi 00-installer-config.yaml
+118  sudo netplan apply
+119  ping 140.130.17.254
+120  pwd
+121  cd
+122  ls -l
+123  cd tmp
+124  dir
+125  ls -l
+126  cd cd2020pj1
+127  git pull
+128  cd ..
+129  ls -l
+130  cd wcm2020
+131  git pull
+132  cd ..
+133  cd wcmj2020
+134  git pull
+135  ls -l
+136  cd ..
+137  ping 140.130.17.254
+138  ifconfig
+139  sudo apt install net-tools
+140  ifconfig
+141  ping 10.0.2.1
+142  clear
+143  ifconfig
+144  ping 140.130.17.254
+145  ifconfig
+146  sudo apt install net-tools
+147  ifconfig
+148  ping 140.130.17.254
+149  cd cd2020pj1
+150  python3 wsgi.py
+151  firefox&
+152  sudo halt
+153  firefox&
+154  xterm&
+155  xterm&
+156  cd tmp
+157  ls -l
+158  cd
+159  ls -l
+160  coppeliasim4&
+161  cd coppeliasim4_rev4
+162  ls -l
+163  mv C* coppeliasim4
+164  ls -l
+165  cd coppeliasim4
+166  ls -l
+167  ls -l cop*
+168  ./coppeliaSim.sh
+169  clear
+170  pwd
+171  ls -l
+172  cd coppeliasim_rev4
+173  mv co* copp4
+174  ls -l
+175  cd copp4
+176  ls -l
+177  cd coppeliasim4
+178  ls -l co*
+179  ./coppeliaSim.sh&
+180  leo&
+181  cd 
+182  cd tmp
+183  cd cd2020pj1
+184  ls -l
+185  cd downloads
+186  ls -l
+187  nautilus&
+188  sudo apt install nautilus
+189  sudo netplan apply
+190  sudo apt install nautilus
+191  ls -l
+192  sudo rm *.pdf
+193  cd /etc/netplan
+194  ls -l
+195  sudo vi 00-installer-config.yaml
+196  sudo netplan apply
+197  sudo apt install nautilus
+198  sudo apt update
+199  firefox&
+200  sudo apt install nautilus
+201  ping 140.130.17.254
+202  ifconfig
+203  ping 140.130.17.254
+204  ifconfig
+205  ping 10.0.2.15
+206  ping 10.0.2.100
+207  ping 10.0.2.1
+208  ping 140.130.17.69
+209  sudo apt install nautilus
+210  ifconfig
+211  ping 140.130.17.254
+212  xterm&
+213  sudo vi 00-installer-config.yaml
+214  sudo netplan apply
+215  ping 140.130.17.4
+216  sudo apt install nautilus
+217  sudo apt update
+218  ping 140.130.17.254
+219  ping 140.130.17.4
+220  ping 168.95.1.1
+221  ping dns.mde.nfu.edu.tw
+222  cd /etc/apt
+223  sl -l
+224  ls -l
+225  cd apt.conf.d
+226  ls -l
+227  sudo vi proxy.conf
+228  sudo apt update
+229  sudo apt install nautils
+230  sudo apt install nautilus
+231  nautilus&
+232  ls -l
+233  sudo vi proxy.conf
+234  sudo apt update
+235  sudo apt autoremove
+236  ls -l
+237  sudo rm proxy.conf
+238  clear
+239  cd
+240  ifconfig
+241  ping 140.130.17.254
+242  ifconfig
+243  ping 10.0.2.15
+244  sudo netplan apply
+245  ping 140.130.17.254
+246  cd ..
+247  cd
+248  ls -l
+249  cd tmp
+250  cd cd2020pj1
+251  ls -l
+252  python3 wsgi.py
+253  firefox&
+254  xterm&
+255  ls -l
+256  cd tmp
+257  ls -l
+258  cd cd2020pj1
+259  ls -l
+260  python3 wsgi.py
+261  sudo vi wsgi.py
+262  python3 wsgi.py
+263  cd docs
+264  ls -l
+265  cd cmsimde
+266  ls -l
+267  vi wsgi.py
+268  python3 wsgi.py
+269  cd /etc/netplan
+270  ls -l
+271  sudo vi 00-installer-config.yaml
+272  ping 2001:288:6004:17::254
+273  ifconfig
+274  ping 10.0.2.15
+275  sudo halt
+276  xterm&
+277  pwd
+278  cd /etc/netplan
+279  pwd
+280  ls -l
+281  ls
+282  ls -l
+283  cd
+284  ls -a
+285  ls -l 
+286  cd /etc/netplan
+287  ls -l
+288  sudo vi 00-installer-config.yaml
+289  ifconfig
+290  ping6 2001:288:6004:17::254
+291  firefox&
+292  ls -l
+293  cd tmp
+294  ls -l
+295  cd cd2020pj1
+296  git pull
+297  git config --global http.proxy http://[2001:288:6004:17::69]:3128
+298  git pull
+299  python3 wsgi.py
+300  cd ..
+301  cd 
+302  cd tmp
+303  dir
+304  ls -l
+305  git clone https://github.com/mdecourse/cd2020pj1.git 
+306  ifconfig
+307  cd
+308  history > history.txt
