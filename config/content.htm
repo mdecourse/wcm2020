@@ -557,6 +557,50 @@ if __name__== '__main__':
 <p style="padding-left: 30px;"><span><a href="https://drive.google.com/open?id=105hlHCk8GRs5LjB_o4EQoBQoQHRSqJQt">W13 教學影片</a>_導入 Filezilla 協助管理 Ubuntu 20.04 實體主機 (for @gm users only)</span></p>
 <h4>W14-W18</h4>
 <p style="padding-left: 30px;">各分組除了將 W1-W13 週之上課內容整理至個人及分組的網際內容管理系統之外, 將在虛擬與實體主機上完成網際 PDF 檔案管理系統.</p>
+<h3>Flask</h3>
+<p><a href="https://flask.palletsprojects.com/">https://flask.palletsprojects.com/</a></p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-5022-8">Building REST APIs with Flask</a></p>
+<p>利用 openssl 建立 self-signed key 與 certificate</p>
+<p>在 Windows 可以利用命令列中的 where openssl 查詢所使用的 openssl 指令位置</p>
+<p>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt</p>
+<p>req  - request</p>
+<p>-x509 <a href="https://en.wikipedia.org/wiki/X.509">x509</a></p>
+<p>-nodes - no <a href="https://en.wikipedia.org/wiki/Data_Encryption_Standard">DES</a> (not to <code>encrypt the private key with DES</code>)</p>
+<p>-days - good for 365 days</p>
+<p>-newkey</p>
+<p>rsa:2048</p>
+<p>-keyout</p>
+<p>-out outfile - output to filename rather than stdout</p>
+<p>key 通常指 private key</p>
+<p>csr <a href="https://en.wikipedia.org/wiki/Certificate_signing_request">certificate signing request</a></p>
+<p>crt certificate</p>
+<p>pem <a href="https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail">privacy-enhanced mail</a></p>
+<p><a href="https://www.geeksforgeeks.org/__name__-special-variable-python/">有關 Python 程式中的 __name__</a></p>
+<p>最簡單的 Flask 程式:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask
+import ssl
+
+# 即使在近端仍希望以 https 模式下執行
+context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+context.load_cert_chain('localhost.crt', 'localhost.key')
+
+app = Flask(__name__)
+
+uwsgi = False
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+    
+
+if uwsgi:
+    # 表示程式在雲端執行
+    application = flaskapp.app
+else:
+    # 表示在近端執行, 以 python3 wsgi.py 執行
+    flaskapp.app.run(host='127.0.0.1', port=6443, debug=True, ssl_context=context)</pre>
+<p>當 Flask 程式以 <a href="https://uwsgi-docs.readthedocs.io">uwsgi</a> 模式執行, SSL 的認證流程可以透過 <a href="https://nginx.org/">NGINX</a> 達成, 網站所屬的正式數位簽章則可以透過 <a href="https://letsencrypt.org/">https://letsencrypt.org/</a> 取得.</p><h3>Template</h3>
+<p><a href="https://flask.palletsprojects.com/en/1.1.x/tutorial/templates/">https://flask.palletsprojects.com/en/1.1.x/tutorial/templates/</a> </p><h3>Database</h3>
 <p></p><h2>MDETools</h2>
 <p>這裡提供機械設計工程課程相關的工具下載與安裝步驟說明.</p>
 <p><a href="https://drive.google.com/open?id=1KPpXzumzBIvMCovZdBYh0s468uFO277k">SolidWorks 2017 DVD </a>下載 (請登入 ＠gm 帳號後下載)</p>

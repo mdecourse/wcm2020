@@ -154,21 +154,49 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content"> <a href='Grouping.html'>Next</a> >> Grouping<br /><h1>About</h1>
-<p>Repository: <a href="https://github.com/mdecourse/wcm2020">https://github.com/mdecourse/wcm2020</a></p>
-<p>Project: <a href="https://github.com/mdecourse/wcm2020/projects/1">https://github.com/mdecourse/wcm2020/projects/1</a></p>
-<p>Gitter: <a href="https://gitter.im/mdecourse/wcm2020">https://gitter.im/mdecourse/wcm2020</a></p>
-<p>Web site: <a href="https://mde.tw/wcm2020">https://mde.tw/wcm2020</a> </p>
-<p>Blog: <a href="https://mde.tw/wcm2020/blog">https://mde.tw/wcm2020/blog</a> </p>
-<p>Presentation:  <a href="https://mde.tw/wcm2020/reveal">https://mde.tw/wcm2020/reveal</a> </p>
-<p>參考: <a href="https://mde.tw/cd2020pj1">https://mde.tw/cd2020pj1</a></p>
-<h4><span><a href="https://drive.google.com/open?id=1cZFSsLEoGOBYojzKzFEf4YH2l--pbS-9"></a></span>電腦輔助設計室與協同設計室行事曆</h4>
-<p><a href="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei">全頁檢視</a></p>
-<p><iframe height="600" src="https://calendar.google.com/calendar/embed?src=mde.nfu.edu.tw_3439313938333136353439%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;mode=week&amp;src=mde.nfu.edu.tw_35303530373431313438%40resource.calendar.google.com&amp;ctz=Asia%2FTaipei&amp;src=yen%40gm.nfu.edu.tw&amp;ctz=Asia%2FTaipei" width="800"></iframe></p>
-<p>請登入 gm 電子郵箱後, 填寫下列表單:</p>
-<p style="padding-left: 30px;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfetOEX-l_KYPUZuUuPft5IC1t-FttkoX1s_Nh9FRxYZXKYWA/viewform?usp=sf_link">選課學員基本資料</a></p>
-<p style="padding-left: 30px;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdSvo89BOMfQOxFflhx-b3eDa_kYP0lUkTLfotdr1AEyQbItw/viewform?usp=sf_link">課程回饋表單</a></p>
-<p style="padding-left: 30px;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfzbBnD7-GL2Nc41vmu2vGB6foETL0cNJpg7yrnMaHCqjRA9w/viewform?usp=sf_link">網際內容管理自評與互評表單</a></p><br /> <a href='Grouping.html'>Next</a> >> Grouping</div>
+    <div id="tipue_search_content">W12-W18 << <a href='W12-W18.html'>Previous</a> <a href='Template.html'>Next</a> >> Template<br /><h1>Flask</h1>
+<p><a href="https://flask.palletsprojects.com/">https://flask.palletsprojects.com/</a></p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-5022-8">Building REST APIs with Flask</a></p>
+<p>利用 openssl 建立 self-signed key 與 certificate</p>
+<p>在 Windows 可以利用命令列中的 where openssl 查詢所使用的 openssl 指令位置</p>
+<p>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt</p>
+<p>req  - request</p>
+<p>-x509 <a href="https://en.wikipedia.org/wiki/X.509">x509</a></p>
+<p>-nodes - no <a href="https://en.wikipedia.org/wiki/Data_Encryption_Standard">DES</a> (not to <code>encrypt the private key with DES</code>)</p>
+<p>-days - good for 365 days</p>
+<p>-newkey</p>
+<p>rsa:2048</p>
+<p>-keyout</p>
+<p>-out outfile - output to filename rather than stdout</p>
+<p>key 通常指 private key</p>
+<p>csr <a href="https://en.wikipedia.org/wiki/Certificate_signing_request">certificate signing request</a></p>
+<p>crt certificate</p>
+<p>pem <a href="https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail">privacy-enhanced mail</a></p>
+<p><a href="https://www.geeksforgeeks.org/__name__-special-variable-python/">有關 Python 程式中的 __name__</a></p>
+<p>最簡單的 Flask 程式:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask
+import ssl
+
+# 即使在近端仍希望以 https 模式下執行
+context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+context.load_cert_chain('localhost.crt', 'localhost.key')
+
+app = Flask(__name__)
+
+uwsgi = False
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+    
+
+if uwsgi:
+    # 表示程式在雲端執行
+    application = flaskapp.app
+else:
+    # 表示在近端執行, 以 python3 wsgi.py 執行
+    flaskapp.app.run(host='127.0.0.1', port=6443, debug=True, ssl_context=context)</pre>
+<p>當 Flask 程式以 <a href="https://uwsgi-docs.readthedocs.io">uwsgi</a> 模式執行, SSL 的認證流程可以透過 <a href="https://nginx.org/">NGINX</a> 達成, 網站所屬的正式數位簽章則可以透過 <a href="https://letsencrypt.org/">https://letsencrypt.org/</a> 取得.</p><br />W12-W18 << <a href='W12-W18.html'>Previous</a> <a href='Template.html'>Next</a> >> Template</div>
         
     <!-- footer -->
       <div class="container">
